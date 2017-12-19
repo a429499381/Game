@@ -1,0 +1,33 @@
+/* 游戏主体框架 */
+body {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.game {
+    width: 200px;
+    height: 400px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    border: 1px solid #ff8484;
+    border-top: none;
+}
+
+/* 下一个方块框架*/
+.nexts {
+    position: absolute;
+    width: 100px;
+    top: 20px;
+    left: 240px;
+}
+.next {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ff8484;
+}
+
+.info {
+    position: absolute;
+    font-size: 14px;
+}
