@@ -31,3 +31,13 @@ body {
     position: absolute;
     font-size: 14px;
 }
+
+.none {
+    background-color: #ffffff;
+}
+.done {
+    background-color: #ff8484;
+}
+.current {
+    background: #cccccc;
+}
