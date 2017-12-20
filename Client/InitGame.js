@@ -40,7 +40,6 @@ var initData = function (gameId, gameId1) {
 
     var squareData = function (datas, dataDivs, domDiv) {
         for (var i = 0; i < datas.length; i++) {
-            console.log(datas.length);
             var data = []
             for (var j = 0; j < datas[0].length; j++) {
                 // 在主体游戏框架中填充 20*20 的 默认色方块（白色）
@@ -60,8 +59,46 @@ var initData = function (gameId, gameId1) {
     };
     squareData(gameData, gameDivs, gameDiv);
     squareData(nextData, nextDivs, nextDiv);
-
     console.log('插入完毕')
+}
+
+// 七种方块模版
+var squareRandom = function () {
+    // 获取随机 方向 方块形状
+    var dirNum = Math.ceil(Math.random() * 7);
+    var squareNum = Math.ceil(Math.random() * 3);
+
+    // 方块 数据模版
+    var squareData = [
+        [
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0]
+        ],
+        [
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0]
+        ],
+        [
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0]
+        ],
+        [
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0]
+        ]
+    ];
+
+
+
+
 }
 
 initData('game', 'next');
