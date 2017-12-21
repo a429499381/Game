@@ -26,6 +26,25 @@ var Game = function () {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ];
 
+    // 绑定键盘事件
+    var bindKeyEvent = function () {
+        var game = new Game();
+        document.onkeydown = function (e) {
+            if(e.keyCode === 38) {  // up
+
+            } else if(e.keyCode === 39) { //right
+
+            } else if(e.keyCode === 40) { //down
+                // game.down();
+                console.log(e.keyCode);
+            }else if(e.keyCode === 37) { // left
+
+            } else if(e.keyCode === 32) { // space
+
+            }
+        }
+    }
+
     // 当前方块
     var curr;
     //下一步方块
@@ -78,6 +97,26 @@ var Game = function () {
         console.log(data.length + '刷新完毕');
     }
 
+    // 设置数据
+    var setData = function () {
+        // 把 方块放入 主界面
+        curr.origin.x = 0;
+        curr.origin.y = 4;
+        for(var i = 0; i < curr.data[0].length; i++) {
+            for (var j = 0; j < curr.data[0].length; j++) {
+                gameData[curr.origin.x + i][curr.origin.y + j] = curr.data[i][j];
+            }
+        }
+    }
+
+    // 下移
+    var down = function () {
+        curr.origin.x ++;
+        setData();
+        refresh(gameData, gameDivs)
+    }
+
+
     // 初始化
     var init = function (doms) {
         gameDiv = doms.gameDiv;
@@ -87,21 +126,17 @@ var Game = function () {
         initData(gameDiv, nextDiv);
 
         // 把 方块放入 主界面
-        curr.origin.x = 0;
-        curr.origin.y = 4;
-        for(var i = 0; i < curr.data[0].length; i++) {
-            for (var j = 0; j < curr.data[0].length; j++) {
-                gameData[curr.origin.x + i][curr.origin.y + j] = curr.data[i][j];
-            }
-        }
-
+        setData();
         refresh(gameData, gameDivs);
         refresh(next.data, nextDivs);
+
+        bindKeyEvent();
     }
 
 
 
     // 导出API
     this.init = init;
+    this.down = down;
 
 }
