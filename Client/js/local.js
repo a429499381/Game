@@ -10,6 +10,8 @@ var Local = function () {
         game = new Game();
         game.init(doms);
     }
+
+
     // 导出API
     this.start = start;
 }
