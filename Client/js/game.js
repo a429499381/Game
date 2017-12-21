@@ -100,16 +100,16 @@ var Game = function () {
     var check = function (pos, x, y) {
         if(pos.x + x < 0) {
             return false;
-        } else if(pos.x + x > gameData.length) {
+        } else if(pos.x + x >= gameData.length) {
             return false;
         } else if(pos.y + y < 0) {
             return false;
         } else if(pos.y + y >= gameData[0].length) {
             return false;
-        } else if(gameData[pos.x +x][pos.y +y] === 1) {
-            return false;
-        } else {
+        } else if (gameData[pos.x + x][pos.y + y] !== 1) {
             return true;
+        } else {
+            return false;
         }
     }
 
@@ -156,7 +156,6 @@ var Game = function () {
             setData();
             refresh(gameData, gameDivs)
         }
-
     }
 
 
