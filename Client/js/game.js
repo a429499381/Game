@@ -35,8 +35,7 @@ var Game = function () {
             } else if(e.keyCode === 39) { //right
 
             } else if(e.keyCode === 40) { //down
-                // game.down();
-                console.log(e.keyCode);
+                down();
             }else if(e.keyCode === 37) { // left
 
             } else if(e.keyCode === 32) { // space
@@ -111,9 +110,11 @@ var Game = function () {
 
     // 下移
     var down = function () {
-        curr.origin.x ++;
+        curr.origin.x = curr.origin.x + 1;
         setData();
         refresh(gameData, gameDivs)
+
+        console.log(curr.origin.x);
     }
 
 
