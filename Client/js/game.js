@@ -112,6 +112,21 @@ var Game = function () {
             return true;
         }
     }
+
+    // 检查数据是否合法
+    var isVaild = function (pos, data) {
+        for(var i = 0; i < data.length; i++) {
+            for(var j = 0; j < data[0].length; j++) {
+                if(data[i][j] !== 0) {
+                    if(!check(pos, i, j)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
     // 清除数据
     var clearData = function () {
         for(var i = 0; i < curr.data[0].length; i++) {
@@ -135,10 +150,12 @@ var Game = function () {
 
     // 下移
     var down = function () {
-        clearData();
-        curr.origin.x = curr.origin.x + 1;
-        setData();
-        refresh(gameData, gameDivs)
+       if (curr.canDown(isVaild)) {
+            clearData();
+            curr.down();
+            setData();
+            refresh(gameData, gameDivs)
+        }
 
     }
 
