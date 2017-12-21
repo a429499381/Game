@@ -96,25 +96,50 @@ var Game = function () {
         console.log(data.length + '刷新完毕');
     }
 
+    // 检测点是否合法  边界检查
+    var check = function (pos, x, y) {
+        if(pos.x + x < 0) {
+            return false;
+        } else if(pos.x + x > gameData.length) {
+            return false;
+        } else if(pos.y + y < 0) {
+            return false;
+        } else if(pos.y + y >= gameData[0].length) {
+            return false;
+        } else if(gameData[pos.x +x][pos.y +y] === 1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    // 清除数据
+    var clearData = function () {
+        for(var i = 0; i < curr.data[0].length; i++) {
+            for (var j = 0; j < curr.data[0].length; j++) {
+                gameData[curr.origin.x + i][curr.origin.y + j] = 0;
+            }
+        }
+    }
+
     // 设置数据
     var setData = function () {
         // 把 方块放入 主界面
-        curr.origin.x = 0;
-        curr.origin.y = 4;
         for(var i = 0; i < curr.data[0].length; i++) {
             for (var j = 0; j < curr.data[0].length; j++) {
-                gameData[curr.origin.x + i][curr.origin.y + j] = curr.data[i][j];
+                if(check(curr.origin, i, j)) {
+                    gameData[curr.origin.x + i][curr.origin.y + j] = curr.data[i][j];
+                }
             }
         }
     }
 
     // 下移
     var down = function () {
+        clearData();
         curr.origin.x = curr.origin.x + 1;
         setData();
         refresh(gameData, gameDivs)
 
-        console.log(curr.origin.x);
     }
 
 
@@ -127,6 +152,8 @@ var Game = function () {
         initData(gameDiv, nextDiv);
 
         // 把 方块放入 主界面
+        curr.origin.x = 0;
+        curr.origin.y = 4;
         setData();
         refresh(gameData, gameDivs);
         refresh(next.data, nextDivs);
