@@ -33,11 +33,11 @@ var Game = function () {
             if(e.keyCode === 38) {  // up
 
             } else if(e.keyCode === 39) { //right
-
+                right();
             } else if(e.keyCode === 40) { //down
                 down();
             }else if(e.keyCode === 37) { // left
-
+                left();
             } else if(e.keyCode === 32) { // space
 
             }
@@ -104,7 +104,7 @@ var Game = function () {
             return false;
         } else if(pos.y + y < 0) {
             return false;
-        } else if(pos.y + y >= gameData[0].length) {
+        } else if(pos.y >= gameData[0].length) {
             return false;
         } else if (gameData[pos.x + x][pos.y + y] !== 1) {
             return true;
@@ -158,6 +158,27 @@ var Game = function () {
         }
     }
 
+    // 下移
+    var left = function () {
+        if (curr.canLeft(isVaild)) {
+            clearData();
+            curr.left();
+            setData();
+            refresh(gameData, gameDivs)
+        }
+    }
+
+    // 下移
+    var right = function () {
+        if (curr.canRight(isVaild)) {
+            clearData();
+            curr.right();
+            setData();
+            refresh(gameData, gameDivs)
+        }
+    }
+
+
 
     // 初始化
     var init = function (doms) {
@@ -182,5 +203,6 @@ var Game = function () {
     // 导出API
     this.init = init;
     this.down = down;
+    this.left = left;
 
 }
