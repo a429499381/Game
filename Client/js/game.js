@@ -31,7 +31,7 @@ var Game = function () {
         var game = new Game();
         document.onkeydown = function (e) {
             if(e.keyCode === 38) {  // up
-
+                rotate();
             } else if(e.keyCode === 39) { //right
                 right();
             } else if(e.keyCode === 40) { //down
@@ -39,7 +39,7 @@ var Game = function () {
             }else if(e.keyCode === 37) { // left
                 left();
             } else if(e.keyCode === 32) { // space
-
+                fall()
             }
         }
     }
@@ -148,6 +148,16 @@ var Game = function () {
         }
     }
 
+    // 旋卷
+    var rotate = function () {
+        if (curr.canRotate(isVaild)) {
+            clearData();
+            curr.rotate();
+            setData();
+            refresh(gameData, gameDivs)
+        }
+    }
+
     // 下移
     var down = function () {
        if (curr.canDown(isVaild)) {
@@ -178,6 +188,13 @@ var Game = function () {
         }
     }
 
+    // 下坠
+    var fall = function () {
+        while (down()) {
+            down();
+        };
+    }
+
 
 
     // 初始化
@@ -204,5 +221,7 @@ var Game = function () {
     this.init = init;
     this.down = down;
     this.left = left;
+    this.rotate = rotate;
+    this.fall = fall;
 
 }
