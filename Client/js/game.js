@@ -104,7 +104,7 @@ var Game = function () {
             return false;
         } else if(pos.y + y < 0) {
             return false;
-        } else if(pos.y >= gameData[0].length) {
+        } else if(pos.y + y >= gameData[0].length) {
             return false;
         } else if (gameData[pos.x + x][pos.y + y] !== 1) {
             return true;
@@ -158,7 +158,7 @@ var Game = function () {
         }
     }
 
-    // 下移
+    // 左移
     var left = function () {
         if (curr.canLeft(isVaild)) {
             clearData();
@@ -168,7 +168,7 @@ var Game = function () {
         }
     }
 
-    // 下移
+    // 右移
     var right = function () {
         if (curr.canRight(isVaild)) {
             clearData();
