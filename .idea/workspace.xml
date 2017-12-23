@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd75c748-42c5-49cb-95b0-7fc7a83c4613" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" id="dd75c748-42c5-49cb-95b0-7fc7a83c4613" name="Default" comment="  修正下一步报错问题， 把下一个方块图形循环遍历给我 nextData 要先清0 ，或者直接  nextData = nextSquare;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/InitGame.js" afterPath="$PROJECT_DIR$/Client/InitGame.js" />
     </list>
@@ -43,21 +42,11 @@
       <file leaf-file-name="InitGame.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="298" column="8" lean-forward="true" selection-start-line="298" selection-start-column="8" selection-end-line="298" selection-end-column="8" />
+            <state relative-caret-position="324">
+              <caret line="294" column="18" lean-forward="true" selection-start-line="294" selection-start-column="18" selection-end-line="294" selection-end-column="18" />
               <folding>
-                <element signature="e#172#194#0" expanded="false" />
-                <element signature="e#230#952#0" expanded="false" />
-                <element signature="e#985#1059#0" expanded="false" />
-                <element signature="e#1099#1930#0" expanded="false" />
-                <element signature="e#1973#5281#0" expanded="false" />
-                <element signature="e#2138#2640#0" expanded="false" />
-                <element signature="e#2669#3176#0" expanded="false" />
-                <element signature="e#3205#3707#0" expanded="false" />
-                <element signature="e#3736#4238#0" expanded="false" />
-                <element signature="e#4267#4769#0" expanded="false" />
-                <element signature="e#5403#5682#0" expanded="false" />
-                <element signature="e#5735#6530#0" expanded="false" />
+                <element signature="e#253#975#0" expanded="false" />
+                <element signature="e#1996#5304#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -78,6 +67,8 @@
     <findStrings>
       <find>check</find>
       <find>test</find>
+      <find>DomDivs</find>
+      <find>currData</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -331,7 +322,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18017000" />
+    <option name="totallyTimeSpent" value="21898000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -432,7 +423,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JavascriptDebugType">
@@ -634,21 +625,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="298" column="8" lean-forward="true" selection-start-line="298" selection-start-column="8" selection-end-line="298" selection-end-column="8" />
+        <state relative-caret-position="324">
+          <caret line="294" column="18" lean-forward="true" selection-start-line="294" selection-start-column="18" selection-end-line="294" selection-end-column="18" />
           <folding>
-            <element signature="e#172#194#0" expanded="false" />
-            <element signature="e#230#952#0" expanded="false" />
-            <element signature="e#985#1059#0" expanded="false" />
-            <element signature="e#1099#1930#0" expanded="false" />
-            <element signature="e#1973#5281#0" expanded="false" />
-            <element signature="e#2138#2640#0" expanded="false" />
-            <element signature="e#2669#3176#0" expanded="false" />
-            <element signature="e#3205#3707#0" expanded="false" />
-            <element signature="e#3736#4238#0" expanded="false" />
-            <element signature="e#4267#4769#0" expanded="false" />
-            <element signature="e#5403#5682#0" expanded="false" />
-            <element signature="e#5735#6530#0" expanded="false" />
+            <element signature="e#253#975#0" expanded="false" />
+            <element signature="e#1996#5304#0" expanded="false" />
           </folding>
         </state>
       </provider>

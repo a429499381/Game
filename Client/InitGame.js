@@ -4,6 +4,7 @@ var nextDiv = document.getElementById('next');
 var gameDivs = [];
 var nextDivs = [];
 
+var currSquareXY = [];
 // 方块起始点
 var origin = {
     x: 0,
@@ -231,50 +232,42 @@ var nextSquare = squareRandom();
 
 // 设置数据
 var setData = function () {
-    nextData = nextSquare;
-    for (var x = 0; x < nextData[0].length; x++) {
-        for (var y = 0; y < nextData.length; y++) {
+    for (var x = 0; x < nextData.length; x++) {
+        for (var y = 0; y < nextData[0].length; y++) {
             if (currSquare[x][y] !== 0) {
                 gameData[origin.x + x][origin.y + y] = currSquare[x][y];
-
+                currSquareXY.push([origin.x +x, origin.y +y]);
             }
         }
     }
 };
 
+// 清楚数据
+var clearData = function () {
+    console.log(currSquareXY);
+    for(var i = 0; i < currSquareXY.length; i++) {
+        gameData[currSquareXY[i][0]][currSquareXY[i][1]] = 0;
+    }
+    currSquareXY = [];
+};
+
 // 刷新
-var refresh = function (gameDivs, nextDivs) {
-    for (var x = 0; x < gameData[0].length; x++) {
-        for (var y = 0; y < gameData.length; y++) {
-            if (gameData !== 0) {
-                if (gameData[x][y] === 1) {
-                    gameDivs[x][y].className = 'done';
-                } else if (gameData[x][y] === 2) {
-                    gameDivs[x][y].className = 'current';
+var refresh = function (datas, DomDivs) {
+    for (var x = 0; x < datas.length; x++) {
+        for (var y = 0; y < datas[0].length; y++) {
+                if (datas[x][y] === 1) {
+                    DomDivs[x][y].className = 'done';
+                } else if (datas[x][y] === 2) {
+                    DomDivs[x][y].className = 'current';
+                } else if(datas[x][y] === 0) {
+                    DomDivs[x][y].className = 'none';
                 }
             }
-        }
     }
-    for (var x = 0; x < nextData[0].length; x++) {
-        for (var y = 0; y < nextData.length; y++) {
-            if (nextData[x][y] !== 0) {
-                if (nextData[x][y] === 1) {
-                    nextDivs[x][y].className = 'done';
-                } else if (nextData[x][y] === 2) {
-                    nextDivs[x][y].className = 'current';
-                }
-            }
-        }
-    }
-}
+};
 
 // 边界检查
-var border = function () {
-    for (var x = 0; x < gameData[0].length; x++) {
-        for (var y = 0; y < gameData.length; y++) {
-
-        }
-    }
+var checkBorder = function () {
 }
 
 // 键盘控制
@@ -296,10 +289,16 @@ var keyEvent = (function () {
 
 // 方向控制
 var down = function () {
-
+    if(currSquareXY[3][0] < gameData.length - 1) {
+        clearData();
+        origin.x = origin.x + 1;
+        setData();
+        refresh(gameData, gameDivs);
+    }
 }
 
 
 initData();
 setData();
-refresh(gameDivs, nextDivs);
+refresh(gameData, gameDivs);
+refresh(nextSquare, nextDivs);
