@@ -222,15 +222,19 @@ var squareRandom = function () {
     var square = backSquare();
     return square;
 };
-var square = squareRandom();
+// 当前方块
+var currSquare = squareRandom();
+
+// 下一步方块
+var nextSquare = squareRandom();
 
 // 设置数据
 var setData = function () {
     for (var x = 0; x < nextData[0].length; x++) {
         for (var y = 0; y < nextData.length; y++) {
-            if (square[x][y] !== 0) {
-                nextData[x][y] = square[x][y];
-                gameData[origin.x + x][origin.y + y] = square[x][y];
+            if (currSquare[x][y] !== 0) {
+                nextData[x][y] = currSquare[x][y];
+                gameData[origin.x + x][origin.y + y] = nextSquare[x][y];
 
             }
         }
@@ -259,6 +263,15 @@ var refresh = function (gameDivs, nextDivs) {
                     nextDivs[x][y].className = 'current';
                 }
             }
+        }
+    }
+}
+
+// 边界检查
+var border = function () {
+    for(var x = 0; x < gameData[0].length; x++) {
+        for(var y = 0; y < gameData.length; y++) {
+
         }
     }
 }
