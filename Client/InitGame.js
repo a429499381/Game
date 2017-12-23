@@ -219,23 +219,43 @@ var squareRandom = function () {
         }
         return false;
     };
-    backSquare();
-    console.log(backSquare());
+    var square = backSquare();
+    return square;
 };
 var square = squareRandom();
 
 // 设置数据
 var setData = function () {
-    for(var x = 0; x < nextData[0].length; x++) {
-        for(var y = 0; y < nextData.length; j++) {
-            console.log(square[x][y]);
-            if(square[x][y] !== 0) {
-                nextDivs[x][y] = square[x][y];
+    for (var x = 0; x < nextData[0].length; x++) {
+        for (var y = 0; y < nextData.length; y++) {
+            if (square[x][y] !== 0) {
+                nextData[x][y] = square[x][y];
+                gameData[x][y] = square[x][y];
+
             }
         }
     }
 };
 
+// 刷新
+var refresh = function (gameDivs, nextDivs) {
+    for (var x = 0; x < gameData[0].length; x++) {
+        for (var y = 0; y < gameData.length; y++) {
+            if (gameData[x][y] !== 0) {
+                gameDivs[x][y] = gameData[x][y];
+            }
+        }
+    }
+    for (var x = 0; x < nextData[0].length; x++) {
+        for (var y = 0; y < nextData.length; y++) {
+            if (nextData[x][y] !== 0) {
+                nextDivs[x][y] = nextData[x][y];
+            }
+        }
+    }
+}
+
 
 initData();
 setData();
+refresh(gameDivs, nextDivs);
