@@ -230,11 +230,11 @@ var nextSquare = squareRandom();
 
 // 设置数据
 var setData = function () {
+    nextData = nextSquare;
     for (var x = 0; x < nextData[0].length; x++) {
         for (var y = 0; y < nextData.length; y++) {
             if (currSquare[x][y] !== 0) {
-                nextData[x][y] = currSquare[x][y];
-                gameData[origin.x + x][origin.y + y] = nextSquare[x][y];
+                gameData[origin.x + x][origin.y + y] = currSquare[x][y];
 
             }
         }
@@ -280,3 +280,4 @@ var border = function () {
 initData();
 setData();
 refresh(gameDivs, nextDivs);
+console.log(nextSquare, nextData);
