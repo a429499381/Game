@@ -236,7 +236,7 @@ var setData = function () {
         for (var y = 0; y < nextData[0].length; y++) {
             if (currSquare[x][y] !== 0) {
                 gameData[origin.x + x][origin.y + y] = currSquare[x][y];
-                currSquareXY.push([origin.x +x, origin.y +y]);
+                currSquareXY.push([origin.x + x, origin.y + y]);
             }
         }
     }
@@ -245,7 +245,7 @@ var setData = function () {
 // 清楚数据
 var clearData = function () {
     console.log(currSquareXY);
-    for(var i = 0; i < currSquareXY.length; i++) {
+    for (var i = 0; i < currSquareXY.length; i++) {
         gameData[currSquareXY[i][0]][currSquareXY[i][1]] = 0;
     }
     currSquareXY = [];
@@ -255,14 +255,14 @@ var clearData = function () {
 var refresh = function (datas, DomDivs) {
     for (var x = 0; x < datas.length; x++) {
         for (var y = 0; y < datas[0].length; y++) {
-                if (datas[x][y] === 1) {
-                    DomDivs[x][y].className = 'done';
-                } else if (datas[x][y] === 2) {
-                    DomDivs[x][y].className = 'current';
-                } else if(datas[x][y] === 0) {
-                    DomDivs[x][y].className = 'none';
-                }
+            if (datas[x][y] === 1) {
+                DomDivs[x][y].className = 'done';
+            } else if (datas[x][y] === 2) {
+                DomDivs[x][y].className = 'current';
+            } else if (datas[x][y] === 0) {
+                DomDivs[x][y].className = 'none';
             }
+        }
     }
 };
 
@@ -278,9 +278,9 @@ var keyEvent = (function () {
         } else if (e.keyCode === 40) { // down
             down();
         } else if (e.keyCode === 37) { // left
-
+            left();
         } else if (e.keyCode === 39) { // right
-
+            right();
         } else if (e.keyCode === 32) { //  space rotate
 
         }
@@ -289,9 +289,25 @@ var keyEvent = (function () {
 
 // 方向控制
 var down = function () {
-    if(currSquareXY[3][0] < gameData.length - 1) {
+    if (currSquareXY[3][0] < gameData.length - 1) {
         clearData();
         origin.x = origin.x + 1;
+        setData();
+        refresh(gameData, gameDivs);
+    }
+}
+var left = function () {
+    if (currSquareXY[3][1] > 1) {
+        clearData();
+        origin.y = origin.y - 1;
+        setData();
+        refresh(gameData, gameDivs);
+    }
+}
+var right = function () {
+    if (currSquareXY[3][1] < gameData[0].length - 1) {
+        clearData();
+        origin.y = origin.y + 1;
         setData();
         refresh(gameData, gameDivs);
     }
