@@ -35,8 +35,8 @@ body {
 .none {
 }
 .done {
-    background-color: #ff8484;
+    background: #ff8484;
 }
 .current {
-    background: #cccccc;
+    background: #eeeeee;
 }
