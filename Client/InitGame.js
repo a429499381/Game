@@ -105,13 +105,13 @@ var squareRandom = function () {
             [1, 1, 0, 0],
             [0, 1, 0, 0],
             [0, 1, 0, 0],
-            [0, 1, 0, 0]
+            [0, 0, 0, 0]
         ],
         [
             [1, 1, 0, 0],
             [1, 0, 0, 0],
             [1, 0, 0, 0],
-            [1, 0, 0, 0]
+            [0, 0, 0, 0]
         ],
         [
             [0, 0, 0, 0],
@@ -230,7 +230,7 @@ var setData = function () {
         for (var y = 0; y < nextData.length; y++) {
             if (square[x][y] !== 0) {
                 nextData[x][y] = square[x][y];
-                gameData[x][y] = square[x][y];
+                gameData[origin.x + x][origin.y + y] = square[x][y];
 
             }
         }
@@ -241,15 +241,23 @@ var setData = function () {
 var refresh = function (gameDivs, nextDivs) {
     for (var x = 0; x < gameData[0].length; x++) {
         for (var y = 0; y < gameData.length; y++) {
-            if (gameData[x][y] !== 0) {
-                gameDivs[x][y] = gameData[x][y];
-            }
+                if(gameData !== 0) {
+                    if(gameData[x][y] === 1) {
+                        gameDivs[x][y].className = 'done';
+                    }else if(gameData[x][y] === 2) {
+                        gameDivs[x][y].className = 'current';
+                    }
+                }
         }
     }
     for (var x = 0; x < nextData[0].length; x++) {
         for (var y = 0; y < nextData.length; y++) {
             if (nextData[x][y] !== 0) {
-                nextDivs[x][y] = nextData[x][y];
+                if(nextData[x][y] === 1) {
+                    nextDivs[x][y].className = 'done';
+                } else if(nextData[x][y] === 2) {
+                    nextDivs[x][y].className = 'current';
+                }
             }
         }
     }
