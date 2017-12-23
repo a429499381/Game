@@ -42,11 +42,20 @@
       <file leaf-file-name="InitGame.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="301" column="32" lean-forward="true" selection-start-line="301" selection-start-column="32" selection-end-line="301" selection-end-column="32" />
+            <state relative-caret-position="376">
+              <caret line="53" column="59" lean-forward="true" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="59" />
               <folding>
                 <element signature="e#253#975#0" expanded="false" />
                 <element signature="e#1996#5304#0" expanded="false" />
+                <element signature="e#2161#2663#0" expanded="false" />
+                <element signature="e#2692#3199#0" expanded="false" />
+                <element signature="e#3228#3730#0" expanded="false" />
+                <element signature="e#3759#4261#0" expanded="false" />
+                <element signature="e#4290#4792#0" expanded="false" />
+                <element signature="e#4833#5251#0" expanded="false" />
+                <element signature="e#5426#5742#0" expanded="false" />
+                <element signature="e#5781#5958#0" expanded="false" />
+                <element signature="e#6007#6415#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -325,11 +334,18 @@
       <option name="project" value="LOCAL" />
       <updated>1514043925264</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="  左右边界检查 修改中。。。">
+      <created>1514044562045</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1514044562045</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22517000" />
+    <option name="totallyTimeSpent" value="22899000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -427,7 +443,8 @@
     <MESSAGE value="报错不能 读取  解决。 无法正确渲染方块与 界面上！！" />
     <MESSAGE value="  修正下一步报错问题， 把下一个方块图形循环遍历给我 nextData 要先清0 ，或者直接  nextData = nextSquare;" />
     <MESSAGE value="  下 边界检查OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="  下 边界检查OK" />
+    <MESSAGE value="  左右边界检查 修改中。。。" />
+    <option name="LAST_COMMIT_MESSAGE" value="  左右边界检查 修改中。。。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -633,11 +650,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="301" column="32" lean-forward="true" selection-start-line="301" selection-start-column="32" selection-end-line="301" selection-end-column="32" />
+        <state relative-caret-position="376">
+          <caret line="53" column="59" lean-forward="true" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="59" />
           <folding>
             <element signature="e#253#975#0" expanded="false" />
             <element signature="e#1996#5304#0" expanded="false" />
+            <element signature="e#2161#2663#0" expanded="false" />
+            <element signature="e#2692#3199#0" expanded="false" />
+            <element signature="e#3228#3730#0" expanded="false" />
+            <element signature="e#3759#4261#0" expanded="false" />
+            <element signature="e#4290#4792#0" expanded="false" />
+            <element signature="e#4833#5251#0" expanded="false" />
+            <element signature="e#5426#5742#0" expanded="false" />
+            <element signature="e#5781#5958#0" expanded="false" />
+            <element signature="e#6007#6415#0" expanded="false" />
           </folding>
         </state>
       </provider>
