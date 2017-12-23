@@ -222,6 +222,7 @@ var squareRandom = function () {
     var square = backSquare();
     return square;
 };
+
 // 当前方块
 var currSquare = squareRandom();
 
@@ -245,21 +246,21 @@ var setData = function () {
 var refresh = function (gameDivs, nextDivs) {
     for (var x = 0; x < gameData[0].length; x++) {
         for (var y = 0; y < gameData.length; y++) {
-                if(gameData !== 0) {
-                    if(gameData[x][y] === 1) {
-                        gameDivs[x][y].className = 'done';
-                    }else if(gameData[x][y] === 2) {
-                        gameDivs[x][y].className = 'current';
-                    }
+            if (gameData !== 0) {
+                if (gameData[x][y] === 1) {
+                    gameDivs[x][y].className = 'done';
+                } else if (gameData[x][y] === 2) {
+                    gameDivs[x][y].className = 'current';
                 }
+            }
         }
     }
     for (var x = 0; x < nextData[0].length; x++) {
         for (var y = 0; y < nextData.length; y++) {
             if (nextData[x][y] !== 0) {
-                if(nextData[x][y] === 1) {
+                if (nextData[x][y] === 1) {
                     nextDivs[x][y].className = 'done';
-                } else if(nextData[x][y] === 2) {
+                } else if (nextData[x][y] === 2) {
                     nextDivs[x][y].className = 'current';
                 }
             }
@@ -269,15 +270,36 @@ var refresh = function (gameDivs, nextDivs) {
 
 // 边界检查
 var border = function () {
-    for(var x = 0; x < gameData[0].length; x++) {
-        for(var y = 0; y < gameData.length; y++) {
+    for (var x = 0; x < gameData[0].length; x++) {
+        for (var y = 0; y < gameData.length; y++) {
 
         }
     }
+}
+
+// 键盘控制
+var keyEvent = (function () {
+    document.onkeydown = function (e) {
+        if (e.keyCode === 38) { // up
+
+        } else if (e.keyCode === 40) { // down
+            down();
+        } else if (e.keyCode === 37) { // left
+
+        } else if (e.keyCode === 39) { // right
+
+        } else if (e.keyCode === 32) { //  space rotate
+
+        }
+    }
+})();
+
+// 方向控制
+var down = function () {
+
 }
 
 
 initData();
 setData();
 refresh(gameDivs, nextDivs);
-console.log(nextSquare, nextData);

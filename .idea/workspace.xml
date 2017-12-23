@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd75c748-42c5-49cb-95b0-7fc7a83c4613" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/InitGame.js" afterPath="$PROJECT_DIR$/Client/InitGame.js" />
     </list>
@@ -42,18 +43,21 @@
       <file leaf-file-name="InitGame.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="245" column="50" lean-forward="true" selection-start-line="245" selection-start-column="50" selection-end-line="245" selection-end-column="50" />
+            <state relative-caret-position="440">
+              <caret line="298" column="8" lean-forward="true" selection-start-line="298" selection-start-column="8" selection-end-line="298" selection-end-column="8" />
               <folding>
                 <element signature="e#172#194#0" expanded="false" />
                 <element signature="e#230#952#0" expanded="false" />
                 <element signature="e#985#1059#0" expanded="false" />
+                <element signature="e#1099#1930#0" expanded="false" />
+                <element signature="e#1973#5281#0" expanded="false" />
                 <element signature="e#2138#2640#0" expanded="false" />
                 <element signature="e#2669#3176#0" expanded="false" />
                 <element signature="e#3205#3707#0" expanded="false" />
                 <element signature="e#3736#4238#0" expanded="false" />
                 <element signature="e#4267#4769#0" expanded="false" />
-                <element signature="e#5402#5681#0" expanded="false" />
+                <element signature="e#5403#5682#0" expanded="false" />
+                <element signature="e#5735#6530#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -73,6 +77,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>check</find>
+      <find>test</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -315,11 +320,18 @@
       <option name="project" value="LOCAL" />
       <updated>1514015809791</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="  修正下一步报错问题， 把下一个方块图形循环遍历给我 nextData 要先清0 ，或者直接  nextData = nextSquare;">
+      <created>1514036271248</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1514036271248</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17097000" />
+    <option name="totallyTimeSpent" value="18017000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -337,7 +349,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="SFDX" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5037274" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.49627262" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32905984" sideWeight="0.49627262" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
@@ -345,7 +357,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Log Manager" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39957264" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39957264" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -415,7 +427,8 @@
     <MESSAGE value="  初始化OK， 开始方块渲染" />
     <MESSAGE value="  初始化OK， 开始方块渲染  报错不能 读取 0" />
     <MESSAGE value="报错不能 读取  解决。 无法正确渲染方块与 界面上！！" />
-    <option name="LAST_COMMIT_MESSAGE" value="报错不能 读取  解决。 无法正确渲染方块与 界面上！！" />
+    <MESSAGE value="  修正下一步报错问题， 把下一个方块图形循环遍历给我 nextData 要先清0 ，或者直接  nextData = nextSquare;" />
+    <option name="LAST_COMMIT_MESSAGE" value="  修正下一步报错问题， 把下一个方块图形循环遍历给我 nextData 要先清0 ，或者直接  nextData = nextSquare;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -621,18 +634,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="245" column="50" lean-forward="true" selection-start-line="245" selection-start-column="50" selection-end-line="245" selection-end-column="50" />
+        <state relative-caret-position="440">
+          <caret line="298" column="8" lean-forward="true" selection-start-line="298" selection-start-column="8" selection-end-line="298" selection-end-column="8" />
           <folding>
             <element signature="e#172#194#0" expanded="false" />
             <element signature="e#230#952#0" expanded="false" />
             <element signature="e#985#1059#0" expanded="false" />
+            <element signature="e#1099#1930#0" expanded="false" />
+            <element signature="e#1973#5281#0" expanded="false" />
             <element signature="e#2138#2640#0" expanded="false" />
             <element signature="e#2669#3176#0" expanded="false" />
             <element signature="e#3205#3707#0" expanded="false" />
             <element signature="e#3736#4238#0" expanded="false" />
             <element signature="e#4267#4769#0" expanded="false" />
-            <element signature="e#5402#5681#0" expanded="false" />
+            <element signature="e#5403#5682#0" expanded="false" />
+            <element signature="e#5735#6530#0" expanded="false" />
           </folding>
         </state>
       </provider>
