@@ -267,12 +267,19 @@ var refresh = function (datas, DomDivs) {
 };
 
 // 边界检查
-var checkBorder = function () {
+var checkBorder = function (dir) {
     for(var i = 0; i < currSquareXY.length; i++) {
+
         for(var j = 0; j < currSquareXY[i].length; j++) {
-            if(currSquareXY[i][j + 1] <= 0) {
+            if(currSquareXY[i][j + 1] <= 0 && dir === 'left') {
                 return false;
             }
+            if(currSquareXY[i][j + 1] >= gameData[0].length - 1 && dir === 'right') {
+                return false;
+            }
+        }
+        if(currSquareXY[3][0] >= gameData.length - 1 && dir === 'down') {
+            return false;
         }
     }
     return  true;
@@ -297,7 +304,7 @@ var keyEvent = (function () {
 
 // 方向控制
 var down = function () {
-    if (currSquareXY[3][0] < gameData.length - 1) {
+    if (checkBorder('down')) {
         clearData();
         origin.x = origin.x + 1;
         setData();
@@ -305,7 +312,7 @@ var down = function () {
     }
 }
 var left = function () {
-    if (checkBorder()) {
+    if (checkBorder('left')) {
         clearData();
         origin.y = origin.y - 1;
         setData();
@@ -313,7 +320,7 @@ var left = function () {
     }
 }
 var right = function () {
-    if (currSquareXY[3][1] < gameData[0].length - 1) {
+    if (checkBorder('right')) {
         clearData();
         origin.y = origin.y + 1;
         setData();
