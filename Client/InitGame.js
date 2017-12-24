@@ -288,6 +288,22 @@ var checkBorder = function (dir) {
     return true;
 }
 
+// 本次 结束
+var currOver = function () {
+    for(var i = 0; i < gameData.length; i++) {
+        for(var j = 0; j < gameData[0].length; j++) {
+            if(gameData[i][j] !== 0) {
+                gameData[i][j] = 2;
+            }
+        }
+    }
+    currSquare = nextSquare;
+    nextSquare = squareRandom();
+    setData();
+    refresh(gameData, gameDivs);
+    refresh(nextSquare, nextDivs);
+}
+
 // 键盘控制
 var keyEvent = (function () {
     document.onkeydown = function (e) {
@@ -312,6 +328,7 @@ var down = function () {
         origin.x = origin.x + 1;
         setData();
         refresh(gameData, gameDivs);
+        currOver();
     }
 }
 var left = function () {
