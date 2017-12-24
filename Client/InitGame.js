@@ -238,8 +238,12 @@ var setData = function () {
     for (var x = 0; x < nextData.length; x++) {
         for (var y = 0; y < nextData[0].length; y++) {
             if (currSquare[x][y] !== 0) {
-                gameData[origin.x + x][origin.y + y] = currSquare[x][y];
-                currSquareXY.push([origin.x + x, origin.y + y]);
+                // 如果 该位置 为 0 才能设置
+                if(gameData[origin.x + x][origin.y + y] === 0) {
+                    gameData[origin.x + x][origin.y + y] = currSquare[x][y];
+                    currSquareXY.push([origin.x + x, origin.y + y]);
+                }
+
             }
         }
     }
@@ -292,13 +296,15 @@ var checkBorder = function (dir) {
 var currOver = function () {
     for(var i = 0; i < gameData.length; i++) {
         for(var j = 0; j < gameData[0].length; j++) {
-            if(gameData[i][j] !== 0) {
+            if(gameData[i][j] === 1) {
                 gameData[i][j] = 2;
             }
         }
     }
+    currSquareXY = [];
     currSquare = nextSquare;
     nextSquare = squareRandom();
+    origin.x = 0; origin.y = 4;
     setData();
     refresh(gameData, gameDivs);
     refresh(nextSquare, nextDivs);
@@ -328,8 +334,15 @@ var down = function () {
         origin.x = origin.x + 1;
         setData();
         refresh(gameData, gameDivs);
-        currOver();
+    } else if(!checkBorder('down')) {
+        clearData();
     }
+
+    if(!checkBorder('down')) {
+        currOver();
+        console.log(currSquareXY);
+    }
+
 }
 var left = function () {
     if (checkBorder('left')) {
@@ -337,6 +350,7 @@ var left = function () {
         origin.y = origin.y - 1;
         setData();
         refresh(gameData, gameDivs);
+        clearData();
     }
 }
 var right = function () {
