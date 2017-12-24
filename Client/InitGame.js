@@ -268,6 +268,14 @@ var refresh = function (datas, DomDivs) {
 
 // 边界检查
 var checkBorder = function () {
+    for(var i = 0; i < currSquareXY.length; i++) {
+        for(var j = 0; j < currSquareXY[i].length; j++) {
+            if(currSquareXY[i][j + 1] <= 0) {
+                return false;
+            }
+        }
+    }
+    return  true;
 }
 
 // 键盘控制
@@ -297,7 +305,7 @@ var down = function () {
     }
 }
 var left = function () {
-    if (currSquareXY[3][1] > 1) {
+    if (checkBorder()) {
         clearData();
         origin.y = origin.y - 1;
         setData();
