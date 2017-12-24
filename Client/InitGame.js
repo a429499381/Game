@@ -4,6 +4,9 @@ var nextDiv = document.getElementById('next');
 var gameDivs = [];
 var nextDivs = [];
 
+// 定时器
+var time = null;
+
 var currSquareXY = [];
 // 方块起始点
 var origin = {
@@ -268,27 +271,27 @@ var refresh = function (datas, DomDivs) {
 
 // 边界检查
 var checkBorder = function (dir) {
-    for(var i = 0; i < currSquareXY.length; i++) {
+    for (var i = 0; i < currSquareXY.length; i++) {
 
-        for(var j = 0; j < currSquareXY[i].length; j++) {
-            if(currSquareXY[i][j + 1] <= 0 && dir === 'left') {
+        for (var j = 0; j < currSquareXY[i].length; j++) {
+            if (currSquareXY[i][j + 1] <= 0 && dir === 'left') {
                 return false;
             }
-            if(currSquareXY[i][j + 1] >= gameData[0].length - 1 && dir === 'right') {
+            if (currSquareXY[i][j + 1] >= gameData[0].length - 1 && dir === 'right') {
                 return false;
             }
         }
-        if(currSquareXY[3][0] >= gameData.length - 1 && dir === 'down') {
+        if (currSquareXY[3][0] >= gameData.length - 1 && dir === 'down') {
             return false;
         }
     }
-    return  true;
+    return true;
 }
 
 // 键盘控制
 var keyEvent = (function () {
     document.onkeydown = function (e) {
-        if (e.keyCode === 38) { // up
+        if (e.keyCode === 38) { // up rotate
 
         } else if (e.keyCode === 40) { // down
             down();
@@ -296,8 +299,8 @@ var keyEvent = (function () {
             left();
         } else if (e.keyCode === 39) { // right
             right();
-        } else if (e.keyCode === 32) { //  space rotate
-
+        } else if (e.keyCode === 32) { //  space  下坠
+            fastDown();
         }
     }
 })();
@@ -326,6 +329,13 @@ var right = function () {
         setData();
         refresh(gameData, gameDivs);
     }
+}
+
+var fastDown = function () {
+    while (checkBorder('down')) {
+        down();
+    }
+
 }
 
 

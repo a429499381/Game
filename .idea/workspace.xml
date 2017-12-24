@@ -32,8 +32,8 @@
       <file leaf-file-name="Main.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/Main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+            <state relative-caret-position="180">
+              <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -42,17 +42,19 @@
       <file leaf-file-name="InitGame.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="219" column="9" lean-forward="true" selection-start-line="219" selection-start-column="9" selection-end-line="219" selection-end-column="9" />
+            <state relative-caret-position="394">
+              <caret line="334" column="33" lean-forward="true" selection-start-line="334" selection-start-column="33" selection-end-line="334" selection-end-column="33" />
               <folding>
-                <element signature="e#195#217#0" expanded="false" />
-                <element signature="e#253#975#0" expanded="false" />
-                <element signature="e#2161#2663#0" expanded="false" />
-                <element signature="e#2692#3199#0" expanded="false" />
-                <element signature="e#2707#2821#0" expanded="false" />
-                <element signature="e#3228#3730#0" expanded="false" />
-                <element signature="e#3759#4261#0" expanded="false" />
-                <element signature="e#4290#4792#0" expanded="false" />
+                <element signature="e#220#242#0" expanded="false" />
+                <element signature="e#278#1000#0" expanded="false" />
+                <element signature="e#2021#5329#0" expanded="false" />
+                <element signature="e#2186#2688#0" expanded="false" />
+                <element signature="e#2717#3224#0" expanded="false" />
+                <element signature="e#2732#2846#0" expanded="false" />
+                <element signature="e#3253#3755#0" expanded="false" />
+                <element signature="e#3784#4286#0" expanded="false" />
+                <element signature="e#4315#4817#0" expanded="false" />
+                <element signature="e#6484#6983#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -399,11 +401,18 @@
       <option name="project" value="LOCAL" />
       <updated>1514093684489</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="  左右边界检查   上 左 右  边界检查OK">
+      <created>1514097159147</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1514097159148</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26152000" />
+    <option name="totallyTimeSpent" value="26811000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -511,11 +520,12 @@
     <MESSAGE value="  下 边界检查OK" />
     <MESSAGE value="  左右边界检查 修改中。。。" />
     <MESSAGE value="  左右边界检查  通用还是不太会写" />
-    <option name="LAST_COMMIT_MESSAGE" value="  左右边界检查  通用还是不太会写" />
+    <MESSAGE value="  左右边界检查   上 左 右  边界检查OK" />
+    <option name="LAST_COMMIT_MESSAGE" value="  左右边界检查   上 左 右  边界检查OK" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -705,25 +715,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/Main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+        <state relative-caret-position="180">
+          <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="219" column="9" lean-forward="true" selection-start-line="219" selection-start-column="9" selection-end-line="219" selection-end-column="9" />
+        <state relative-caret-position="394">
+          <caret line="334" column="33" lean-forward="true" selection-start-line="334" selection-start-column="33" selection-end-line="334" selection-end-column="33" />
           <folding>
-            <element signature="e#195#217#0" expanded="false" />
-            <element signature="e#253#975#0" expanded="false" />
-            <element signature="e#2161#2663#0" expanded="false" />
-            <element signature="e#2692#3199#0" expanded="false" />
-            <element signature="e#2707#2821#0" expanded="false" />
-            <element signature="e#3228#3730#0" expanded="false" />
-            <element signature="e#3759#4261#0" expanded="false" />
-            <element signature="e#4290#4792#0" expanded="false" />
+            <element signature="e#220#242#0" expanded="false" />
+            <element signature="e#278#1000#0" expanded="false" />
+            <element signature="e#2021#5329#0" expanded="false" />
+            <element signature="e#2186#2688#0" expanded="false" />
+            <element signature="e#2717#3224#0" expanded="false" />
+            <element signature="e#2732#2846#0" expanded="false" />
+            <element signature="e#3253#3755#0" expanded="false" />
+            <element signature="e#3784#4286#0" expanded="false" />
+            <element signature="e#4315#4817#0" expanded="false" />
+            <element signature="e#6484#6983#0" expanded="false" />
           </folding>
         </state>
       </provider>
