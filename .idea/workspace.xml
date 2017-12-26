@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd75c748-42c5-49cb-95b0-7fc7a83c4613" name="Default" comment="   数据">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/Square.js" />
+    <list default="true" id="dd75c748-42c5-49cb-95b0-7fc7a83c4613" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/InitGame.js" afterPath="$PROJECT_DIR$/Client/InitGame.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Main.html" afterPath="$PROJECT_DIR$/Client/Main.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -41,30 +39,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InitGame.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InitGame.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="68" column="31" lean-forward="false" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="31" />
+            <state relative-caret-position="121">
+              <caret line="70" column="8" lean-forward="true" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
               <folding>
-                <element signature="e#183#905#0" expanded="false" />
-                <element signature="e#922#984#0" expanded="false" />
-                <element signature="e#1109#1788#0" expanded="false" />
-                <element signature="e#2487#2664#0" expanded="false" />
-                <element signature="e#2713#3121#0" expanded="false" />
-                <element signature="e#3165#3664#0" expanded="false" />
-                <element signature="e#3702#4111#0" expanded="false" />
-                <element signature="e#4149#4534#0" expanded="false" />
+                <element signature="e#1121#1800#0" expanded="false" />
+                <element signature="e#2814#3222#0" expanded="false" />
+                <element signature="e#3332#3821#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Square.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Square.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/Square.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="147" column="11" lean-forward="true" selection-start-line="147" selection-start-column="11" selection-end-line="147" selection-end-column="11" />
+            <state relative-caret-position="-20">
+              <caret line="1" column="4" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
               <folding>
                 <element signature="e#202#280#0" expanded="false" />
                 <element signature="e#391#893#0" expanded="false" />
@@ -72,7 +65,7 @@
                 <element signature="e#1460#1962#0" expanded="false" />
                 <element signature="e#1992#2494#0" expanded="false" />
                 <element signature="e#2524#3026#0" expanded="false" />
-                <element signature="e#3622#3654#0" expanded="false" />
+                <element signature="e#3088#3591#0" expanded="false" />
                 <element signature="e#3683#3715#0" expanded="false" />
                 <element signature="e#3745#3777#0" expanded="false" />
                 <element signature="e#3808#3970#0" expanded="false" />
@@ -120,6 +113,7 @@
         <option value="$PROJECT_DIR$/Client/Ui.css" />
         <option value="$PROJECT_DIR$/Client/SquareRandom.js" />
         <option value="$PROJECT_DIR$/Client/Main.html" />
+        <option value="chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/content.bundle.js" />
         <option value="$PROJECT_DIR$/Client/InitGame.js" />
       </list>
     </option>
@@ -432,11 +426,18 @@
       <option name="project" value="LOCAL" />
       <updated>1514097159148</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="  重构">
+      <created>1514254564062</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1514254564063</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33270000" />
+    <option name="totallyTimeSpent" value="36571000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -459,7 +460,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5037274" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3280363" sideWeight="0.49627262" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3280363" sideWeight="0.49627262" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -470,7 +471,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3995657" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39954597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="SFDX" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -544,15 +545,17 @@
     <MESSAGE value="  左右边界检查 修改中。。。" />
     <MESSAGE value="  左右边界检查  通用还是不太会写" />
     <MESSAGE value="  左右边界检查   上 左 右  边界检查OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="  左右边界检查   上 左 右  边界检查OK" />
+    <MESSAGE value="  重构" />
+    <option name="LAST_COMMIT_MESSAGE" value="  重构" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="18" />
+      <option name="time" value="26" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JavascriptDebugType">
         <watch expression="nextData.length" />
+        <watch expression="curr" />
       </configuration>
     </watches-manager>
   </component>
@@ -740,27 +743,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="68" column="31" lean-forward="false" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="31" />
-          <folding>
-            <element signature="e#183#905#0" expanded="false" />
-            <element signature="e#922#984#0" expanded="false" />
-            <element signature="e#1109#1788#0" expanded="false" />
-            <element signature="e#2487#2664#0" expanded="false" />
-            <element signature="e#2713#3121#0" expanded="false" />
-            <element signature="e#3165#3664#0" expanded="false" />
-            <element signature="e#3702#4111#0" expanded="false" />
-            <element signature="e#4149#4534#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Client/Square.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="147" column="11" lean-forward="true" selection-start-line="147" selection-start-column="11" selection-end-line="147" selection-end-column="11" />
+        <state relative-caret-position="-20">
+          <caret line="1" column="4" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
           <folding>
             <element signature="e#202#280#0" expanded="false" />
             <element signature="e#391#893#0" expanded="false" />
@@ -768,10 +754,22 @@
             <element signature="e#1460#1962#0" expanded="false" />
             <element signature="e#1992#2494#0" expanded="false" />
             <element signature="e#2524#3026#0" expanded="false" />
-            <element signature="e#3622#3654#0" expanded="false" />
+            <element signature="e#3088#3591#0" expanded="false" />
             <element signature="e#3683#3715#0" expanded="false" />
             <element signature="e#3745#3777#0" expanded="false" />
             <element signature="e#3808#3970#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="70" column="8" lean-forward="true" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
+          <folding>
+            <element signature="e#1121#1800#0" expanded="false" />
+            <element signature="e#2814#3222#0" expanded="false" />
+            <element signature="e#3332#3821#0" expanded="false" />
           </folding>
         </state>
       </provider>

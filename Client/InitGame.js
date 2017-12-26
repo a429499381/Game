@@ -28,10 +28,10 @@ var gameData = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 var nextData = [
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0]
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0]
 ];
 
 // 定时器
@@ -65,21 +65,22 @@ var initData = function () {
 
 
 // 当前方块
-var curr = Square();
-var currSquare = curr.getSquare();
+var curr = new Square();
+var currData = curr.getSquare();
 
 // 下一步方块
-var next = Square();
+var next = new Square();
 nextData = next.getSquare();
 
 // 设置数据
-var setData = function (currObj) {
-    for (var x = 0; x < currSquare.length; x++) {
-        for (var y = 0; y < currSquare[0].length; y++) {
-            if (currSquare[x][y] !== 0) {
+var setData = function (currObj, datas) {
+    var square = currObj.getSquare();
+    for (var x = 0; x < square.length; x++) {
+        for (var y = 0; y < square[0].length; y++) {
+            if (square[x][y] !== 0) {
                 // 如果 该位置 为 0 才能设置
-                if(gameData[curr.origin.x + x][curr.origin.y + y] === 0) {
-                    gameData[curr.origin.x + x][curr.origin.y + y] = currSquare[x][y];
+                if (datas[curr.origin.x + x][curr.origin.y + y] === 0) {
+                    datas[curr.origin.x + x][curr.origin.y + y] = square[x][y];
                 }
 
             }
@@ -89,11 +90,13 @@ var setData = function (currObj) {
 
 // 清楚数据
 var clearData = function () {
-    console.log(currSquareXY);
-    for (var i = 0; i < currSquareXY.length; i++) {
-        gameData[currSquareXY[i][0]][currSquareXY[i][1]] = 0;
+    for (var i = 0; i < currData.length; i++) {
+       for(var j = 0; j < currData[i].length; j++) {
+           if(currData[i][j] !== 0) {
+               gameData[curr.origin.x + i][curr.origin.y +j] = 0;
+           }
+       }
     }
-    currSquareXY = [];
 };
 
 // 刷新
@@ -111,42 +114,39 @@ var refresh = function (datas, DomDivs) {
     }
 };
 
-// 边界检查
-var checkBorder = function (dir) {
-    for (var i = 0; i < currSquareXY.length; i++) {
 
-        for (var j = 0; j < currSquareXY[i].length; j++) {
-            if (currSquareXY[i][j + 1] <= 0 && dir === 'left') {
-                return false;
-            }
-            if (currSquareXY[i][j + 1] >= gameData[0].length - 1 && dir === 'right') {
-                return false;
-            }
-        }
-        if (currSquareXY[3][0] >= gameData.length - 1 && dir === 'down') {
+
+// 数据检查
+var checkData = function (currData) {
+    // 点检查
+    var checkBorder = function (currObj, x , y) {
+        if(currObj.origin.x + x < 0) {
             return false;
+        } else if(currObj.origin.x + x  >= gameData.length - 2) {
+            return false;
+        } else if(currObj.origin.y + y  < 0) {
+            return false;
+        } else if(currObj.origin.y + y >= gameData[0].length -1) {
+            return false;
+        } else if(gameData[currObj.origin.x + x][currObj.origin.y + y] === 0) {
+            return true;
+        } else {
+            return false;
+
+        }
+    }
+
+
+    for (var i = 0; i < currData.length; i++) {
+        for(var j = 0; j < currData[i].length; j++) {
+            if(!checkBorder(curr, i, j)) {
+                return false;
+            }
         }
     }
     return true;
 }
 
-// 本次 结束
-var currOver = function () {
-    for(var i = 0; i < gameData.length; i++) {
-        for(var j = 0; j < gameData[0].length; j++) {
-            if(gameData[i][j] === 1) {
-                gameData[i][j] = 2;
-            }
-        }
-    }
-    currSquareXY = [];
-    currSquare = nextSquare;
-    nextSquare = squareRandom();
-    origin.x = 0; origin.y = 4;
-    setData();
-    refresh(gameData, gameDivs);
-    refresh(nextSquare, nextDivs);
-}
 
 // 键盘控制
 var keyEvent = (function () {
@@ -165,9 +165,23 @@ var keyEvent = (function () {
     }
 })();
 
+// 下
+var down = function () {
+    if(checkData(curr)) {
+        console.log('无法下移')
+        return false;
+    }
+    clearData();
+    curr.down()
+    console.log(curr.origin.x);
+    setData(curr, gameData);
+    refresh(gameData, gameDivs);
+
+}
 
 
 initData();
-setData(currSquare);
+setData(curr, gameData);
+setData(next, nextData);
 refresh(gameData, gameDivs);
-refresh(nextSquare, nextDivs);
+refresh(nextData, nextDivs);
