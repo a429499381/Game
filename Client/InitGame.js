@@ -117,34 +117,33 @@ var refresh = function (datas, DomDivs) {
 
 
 // 数据检查
-var checkData = function (currData) {
-    // 点检查
-    var checkBorder = function (currObj, x , y) {
-        if(currObj.origin.x + x < 0) {
-            return false;
-        } else if(currObj.origin.x + x  >= gameData.length - 2) {
-            return false;
-        } else if(currObj.origin.y + y  < 0) {
-            return false;
-        } else if(currObj.origin.y + y >= gameData[0].length -1) {
-            return false;
-        } else if(gameData[currObj.origin.x + x][currObj.origin.y + y] === 0) {
-            return true;
-        } else {
-            return false;
-
-        }
-    }
-
-
+var checkData = function (curr, currData) {
     for (var i = 0; i < currData.length; i++) {
-        for(var j = 0; j < currData[i].length; j++) {
-            if(!checkBorder(curr, i, j)) {
+        for (var j = 0; j < currData[i].length; j++) {
+            if (!checkBorder(curr, i, j)) {
                 return false;
             }
         }
     }
     return true;
+}
+
+// 原点 检查
+var checkBorder = function (currObj, x, y) {
+    if (currObj.origin.x + x < 0) {
+        return false;
+    } else if (currObj.origin.x + x >= gameData.length) {
+        return false;
+    } else if (currObj.origin.y + y < 0) {
+        return false;
+    } else if (currObj.origin.y + y >= gameData[0].length) {
+        return false;
+    } else if (gameData[currObj.origin.x + x][currObj.origin.y + y] === 2) {
+        return false; // 如果这个坐标是个 2
+    } else {
+        return true;
+
+    }
 }
 
 
@@ -167,15 +166,14 @@ var keyEvent = (function () {
 
 // 下
 var down = function () {
-    if(checkData(curr)) {
-        console.log('无法下移')
-        return false;
+    if(checkData(curr, currData)) {
+        clearData();
+        curr.down()
+        console.log(curr.origin.x);
+        setData(curr, gameData);
+        refresh(gameData, gameDivs);
     }
-    clearData();
-    curr.down()
-    console.log(curr.origin.x);
-    setData(curr, gameData);
-    refresh(gameData, gameDivs);
+
 
 }
 
