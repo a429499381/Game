@@ -4,16 +4,6 @@ var nextDiv = document.getElementById('next');
 var gameDivs = [];
 var nextDivs = [];
 
-// 定时器
-var time = null;
-
-var currSquareXY = [];
-// 方块起始点
-var origin = {
-    x: 0,
-    y: 4
-};
-
 // 游戏主体数据模版 10*20
 var gameData = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -37,17 +27,19 @@ var gameData = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
-
-// 下一步数据模版 4*4
 var nextData = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0]
 ];
+
+// 定时器
+var time = null;
 
 // 初始数据模版
 var initData = function () {
+
 
     var squareData = function (datas, dataDivs, domDiv) {
         for (var i = 0; i < datas.length; i++) {
@@ -71,177 +63,23 @@ var initData = function () {
     squareData(nextData, nextDivs, nextDiv);
 }
 
-// 五种方块模版
-var squareRandom = function () {
-    // 获取随机 方向 方块形状
-    var dirNum = Math.ceil(Math.random() * 4) - 1;
-    var squareNum = Math.ceil(Math.random() * 5) - 1;
-
-    // 方块 数据模版
-    var squareData0 = [
-        [
-            [1, 1, 1, 1],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0]
-        ],
-        [
-            [1, 0, 0, 0],
-            [1, 0, 0, 0],
-            [1, 0, 0, 0],
-            [1, 0, 0, 0]
-        ],
-        [
-            [1, 1, 1, 1],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0]
-        ],
-        [
-            [1, 0, 0, 0],
-            [1, 0, 0, 0],
-            [1, 0, 0, 0],
-            [1, 0, 0, 0]
-        ]
-    ]; // 1
-    var squareData1 = [ // 7
-        [
-            [1, 1, 0, 0],
-            [0, 1, 0, 0],
-            [0, 1, 0, 0],
-            [0, 0, 0, 0]
-        ],
-        [
-            [1, 1, 0, 0],
-            [1, 0, 0, 0],
-            [1, 0, 0, 0],
-            [0, 0, 0, 0]
-        ],
-        [
-            [1, 0, 0, 0],
-            [1, 1, 1, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0]
-        ],
-        [
-            [0, 1, 0, 0],
-            [0, 1, 0, 0],
-            [1, 1, 0, 0],
-            [0, 0, 0, 0]
-        ]
-    ]; // 7
-    var squareData2 = [
-        [
-            [1, 1, 0, 0],
-            [1, 1, 0, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0]
-        ],
-        [
-            [1, 1, 0, 0],
-            [1, 1, 0, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0]
-        ],
-        [
-            [1, 1, 0, 0],
-            [1, 1, 0, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0]
-        ],
-        [
-            [1, 1, 0, 0],
-            [1, 1, 0, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0]
-        ]
-    ]; // 田
-    var squareData3 = [
-        [
-            [0, 1, 0, 0],
-            [1, 1, 0, 0],
-            [0, 1, 0, 0],
-            [0, 0, 0, 0]
-        ],
-        [
-            [1, 0, 0, 0],
-            [1, 1, 0, 0],
-            [1, 0, 0, 0],
-            [0, 0, 0, 0]
-        ],
-        [
-            [0, 1, 0, 0],
-            [1, 1, 1, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0]
-        ],
-        [
-            [1, 1, 1, 0],
-            [0, 1, 0, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0]
-        ]
-    ]; // 上
-    var squareData4 = [
-        [
-            [1, 0, 0, 0],
-            [1, 1, 0, 0],
-            [0, 1, 0, 0],
-            [0, 0, 0, 0]
-        ],
-        [
-            [0, 1, 0, 0],
-            [1, 1, 0, 0],
-            [1, 0, 0, 0],
-            [0, 0, 0, 0]
-        ],
-        [
-            [1, 1, 0, 0],
-            [0, 1, 1, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0]
-        ],
-        [
-            [0, 1, 1, 0],
-            [1, 1, 0, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0]
-        ]
-    ]; // z
-
-    var backSquare = function () {
-        if (squareNum === 0) {
-            return squareData0[dirNum];
-        } else if (squareNum === 1) {
-            return squareData1[dirNum]
-        } else if (squareNum === 2) {
-            return squareData2[dirNum]
-        } else if (squareNum === 3) {
-            return squareData3[dirNum]
-        } else if (squareNum === 4) {
-            return squareData4[dirNum]
-        }
-        return false;
-    };
-    var square = backSquare();
-    return square;
-};
 
 // 当前方块
-var currSquare = squareRandom();
+var curr = Square();
+var currSquare = curr.getSquare();
 
 // 下一步方块
-var nextSquare = squareRandom();
+var next = Square();
+nextData = next.getSquare();
 
 // 设置数据
-var setData = function () {
-    for (var x = 0; x < nextData.length; x++) {
-        for (var y = 0; y < nextData[0].length; y++) {
+var setData = function (currObj) {
+    for (var x = 0; x < currSquare.length; x++) {
+        for (var y = 0; y < currSquare[0].length; y++) {
             if (currSquare[x][y] !== 0) {
                 // 如果 该位置 为 0 才能设置
-                if(gameData[origin.x + x][origin.y + y] === 0) {
-                    gameData[origin.x + x][origin.y + y] = currSquare[x][y];
-                    currSquareXY.push([origin.x + x, origin.y + y]);
+                if(gameData[curr.origin.x + x][curr.origin.y + y] === 0) {
+                    gameData[curr.origin.x + x][curr.origin.y + y] = currSquare[x][y];
                 }
 
             }
@@ -327,50 +165,9 @@ var keyEvent = (function () {
     }
 })();
 
-// 方向控制
-var down = function () {
-    if (checkBorder('down')) {
-        clearData();
-        origin.x = origin.x + 1;
-        setData();
-        refresh(gameData, gameDivs);
-    } else if(!checkBorder('down')) {
-        clearData();
-    }
-
-    if(!checkBorder('down')) {
-        currOver();
-        console.log(currSquareXY);
-    }
-
-}
-var left = function () {
-    if (checkBorder('left')) {
-        clearData();
-        origin.y = origin.y - 1;
-        setData();
-        refresh(gameData, gameDivs);
-        clearData();
-    }
-}
-var right = function () {
-    if (checkBorder('right')) {
-        clearData();
-        origin.y = origin.y + 1;
-        setData();
-        refresh(gameData, gameDivs);
-    }
-}
-
-var fastDown = function () {
-    while (checkBorder('down')) {
-        down();
-    }
-
-}
 
 
 initData();
-setData();
+setData(currSquare);
 refresh(gameData, gameDivs);
 refresh(nextSquare, nextDivs);
