@@ -41,8 +41,8 @@
       <file leaf-file-name="InitGame.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="171" column="33" lean-forward="true" selection-start-line="171" selection-start-column="33" selection-end-line="171" selection-end-column="33" />
+            <state relative-caret-position="341">
+              <caret line="162" column="23" lean-forward="true" selection-start-line="162" selection-start-column="23" selection-end-line="162" selection-end-column="23" />
               <folding>
                 <element signature="e#183#905#0" expanded="false" />
                 <element signature="e#922#996#0" expanded="false" />
@@ -448,11 +448,18 @@
       <option name="project" value="LOCAL" />
       <updated>1514371240609</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="  下边界 OK">
+      <created>1514371258096</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1514371258096</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39003000" />
+    <option name="totallyTimeSpent" value="39059000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -772,8 +779,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="171" column="33" lean-forward="true" selection-start-line="171" selection-start-column="33" selection-end-line="171" selection-end-column="33" />
+        <state relative-caret-position="341">
+          <caret line="162" column="23" lean-forward="true" selection-start-line="162" selection-start-column="23" selection-end-line="162" selection-end-column="23" />
           <folding>
             <element signature="e#183#905#0" expanded="false" />
             <element signature="e#922#996#0" expanded="false" />
