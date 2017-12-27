@@ -4,7 +4,6 @@
     <list default="true" id="dd75c748-42c5-49cb-95b0-7fc7a83c4613" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/InitGame.js" afterPath="$PROJECT_DIR$/Client/InitGame.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Ui.css" afterPath="$PROJECT_DIR$/Client/Ui.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -43,8 +42,8 @@
       <file leaf-file-name="InitGame.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="268" column="49" lean-forward="true" selection-start-line="268" selection-start-column="49" selection-end-line="268" selection-end-column="49" />
+            <state relative-caret-position="226">
+              <caret line="293" column="38" lean-forward="true" selection-start-line="293" selection-start-column="38" selection-end-line="293" selection-end-column="38" />
               <folding>
                 <element signature="e#183#905#0" expanded="false" />
                 <element signature="e#922#996#0" expanded="false" />
@@ -607,11 +606,18 @@
       <option name="project" value="LOCAL" />
       <updated>1514396148889</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="  游戏结束检查。">
+      <created>1514397148178</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1514397148178</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53021000" />
+    <option name="totallyTimeSpent" value="53911000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -727,7 +733,8 @@
     <MESSAGE value="   去掉多余 全局变量" />
     <MESSAGE value="    自动循环 下落" />
     <MESSAGE value="  自动下落 固定OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="  自动下落 固定OK" />
+    <MESSAGE value="  游戏结束检查。" />
+    <option name="LAST_COMMIT_MESSAGE" value="  游戏结束检查。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -947,8 +954,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="268" column="49" lean-forward="true" selection-start-line="268" selection-start-column="49" selection-end-line="268" selection-end-column="49" />
+        <state relative-caret-position="226">
+          <caret line="293" column="38" lean-forward="true" selection-start-line="293" selection-start-column="38" selection-end-line="293" selection-end-column="38" />
           <folding>
             <element signature="e#183#905#0" expanded="false" />
             <element signature="e#922#996#0" expanded="false" />

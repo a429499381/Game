@@ -276,6 +276,31 @@ var gameOver = function () {
     return true;
 }
 
+// 消行
+var removeY = function () {
+    var max = 0;
+    var n = 0;
+    for(var i = gameData.length - 1; i >= 0; i--) {
+        max = 0;
+        n = 0;
+        for(var j = 0; j < gameData[0].length; j++) {
+            if(gameData[i][j] === 0) {
+                n++;
+                if(n === 10) {
+                    console.log(i,'之后没有要检查的了')
+                    return false;
+                }
+            }
+            if(gameData[i][j] === 2) {
+                max++;
+                if(max === 10) {
+                    console.log('要消除第',i,'行');
+                }
+            }
+        }
+    }
+}
+
 // 自动下移动
 var TIME = 800;
 var autoMove = function () {
@@ -283,6 +308,7 @@ var autoMove = function () {
         if (down()) {
             down()
         } else {
+            removeY();
             gameOver();
             curr = next;
             next = new Square();
