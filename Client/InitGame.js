@@ -67,7 +67,7 @@ var initData = function () {
 // 当前方块
 var curr = new Square();
 var currData = curr.getSquare();
-
+console.log(currData);
 // 下一步方块
 var next = new Square();
 nextData = next.getSquare();
@@ -120,8 +120,10 @@ var refresh = function (datas, DomDivs) {
 var checkData = function (curr, currData) {
     for (var i = 0; i < currData.length; i++) {
         for (var j = 0; j < currData[i].length; j++) {
-            if (!checkBorder(curr, i, j)) {
-                return false;
+            if(currData[i][j] !== 0) {
+                if (!checkBorder(curr, i, j)) {
+                    return false;
+                }
             }
         }
     }
@@ -166,7 +168,15 @@ var keyEvent = (function () {
 
 // 下
 var down = function () {
-    if(checkData(curr, currData)) {
+    var downOrigin = function () {
+        this.origin = {
+            x: curr.origin.x + 1,
+            y: curr.origin.y + 1
+        }
+    }
+    var downOrigin = new downOrigin();
+    if(checkData(downOrigin
+            , currData)) {
         clearData();
         curr.down()
         console.log(curr.origin.x);
