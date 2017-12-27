@@ -214,6 +214,7 @@ var Square = function () {
         this.data = this.getSquare(this.origin.dir);
     }
 
+    // 初始化执行一次
     this.getSquare();
 };
 

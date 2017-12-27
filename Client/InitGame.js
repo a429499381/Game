@@ -39,8 +39,6 @@ var time = null;
 
 // 初始数据模版
 var initData = function () {
-
-
     var squareData = function (datas, dataDivs, domDiv) {
         for (var i = 0; i < datas.length; i++) {
             var data = []
@@ -69,7 +67,6 @@ var curr = new Square();
 
 // 下一步方块
 var next = new Square();
-nextData = next.getSquare();
 
 // 设置数据
 var setData = function (currObj, datas) {
@@ -257,6 +254,5 @@ var right = function () {
 
 initData();
 setData(curr, gameData);
-setData(next, nextData);
 refresh(gameData, gameDivs);
-refresh(nextData, nextDivs);
+refresh(next.data, nextDivs);
