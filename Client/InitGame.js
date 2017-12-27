@@ -199,6 +199,7 @@ var down = function () {
         refresh(gameData, gameDivs);
         return true;
     } else {
+        fixed();
         return false;
     }
 }
@@ -251,8 +252,20 @@ var right = function () {
 }
 
 
+// 固定方块
+var fixed = function () {
+    for(var i = gameData.length - 1; i >= 0; i--) {
+        for(var j = 0; j < gameData[0].length; j++) {
+            if(gameData[i][j] === 1) {
+                gameData[i][j] = 2;
+            }
+        }
+
+    }
+}
+
 // 自动下移动
-var TIME = 300;
+var TIME = 500;
 var autoMove = function () {
     var move = function () {
         if (down()) {
