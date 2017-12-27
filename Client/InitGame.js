@@ -86,7 +86,7 @@ var setData = function (currObj, datas) {
 var clearData = function (curr) {
     for (var i = 0; i < curr.data.length; i++) {
         for (var j = 0; j < curr.data[i].length; j++) {
-            if(curr.data[i][j] !== 0) {
+            if (curr.data[i][j] !== 0) {
                 gameData[curr.origin.x + i][curr.origin.y + j] = 0;
             }
         }
@@ -171,7 +171,7 @@ var rotate = function () {
         }
     }
     var origin = new Origin();
-    if (checkData(curr,  curr.getSquare(origin.origin.dir))) {
+    if (checkData(curr, curr.getSquare(origin.origin.dir))) {
         clearData(curr);
         curr.rotate();
         setData(curr, gameData);
@@ -215,7 +215,7 @@ var left = function () {
     var Origin = function () {
         this.origin = {
             x: curr.origin.x,
-            y: curr.origin.y -1
+            y: curr.origin.y - 1
         }
     }
     var origin = new Origin();
@@ -251,8 +251,32 @@ var right = function () {
 }
 
 
+// 自动下移动
+var TIME = 300;
+var autoMove = function () {
+    var move = function () {
+        if (down()) {
+            down()
+        } else {
+            console.log(curr);
+            curr = next;
+            console.log(curr);
+            next = new Square();
+            setData(curr, gameData);
+            refresh(gameData, gameDivs);
+            refresh(next.data, nextDivs);
+        }
+    }
+
+    time ? clearInterval(time) : '';
+    time = setInterval(move, TIME);
+}
+
 
 initData();
 setData(curr, gameData);
 refresh(gameData, gameDivs);
 refresh(next.data, nextDivs);
+
+// 自动下移
+autoMove();
