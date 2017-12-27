@@ -14,6 +14,12 @@ var Square = function () {
     this.origin.dir = dirNum;
     this.origin.squareNum = squareNum;
 
+    this.data = [
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0]
+    ]
 
     // 方块 数据模版
     this.squareData0 = [

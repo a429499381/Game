@@ -73,8 +73,8 @@ var next = new Square();
 nextData = next.getSquare();
 
 // 设置数据
-var setData = function (currObj, datas) {
-    var square = currObj.getSquare();
+var setData = function (currObj, datas, dir) {
+    var square = dir ? currObj.getSquare(dir) : currObj.getSquare();
     for (var x = 0; x < square.length; x++) {
         for (var y = 0; y < square[0].length; y++) {
             if (square[x][y] !== 0) {
@@ -92,9 +92,7 @@ var setData = function (currObj, datas) {
 var clearData = function () {
     for (var i = 0; i < currData.length; i++) {
         for (var j = 0; j < currData[i].length; j++) {
-            if (currData[i][j] !== 0) {
                 gameData[curr.origin.x + i][curr.origin.y + j] = 0;
-            }
         }
     }
 };
@@ -152,7 +150,7 @@ var checkBorder = function (currObj, x, y) {
 var keyEvent = (function () {
     document.onkeydown = function (e) {
         if (e.keyCode === 38) { // up rotate
-
+            rotate();
         } else if (e.keyCode === 40) { // down
             down();
         } else if (e.keyCode === 37) { // left
@@ -164,6 +162,29 @@ var keyEvent = (function () {
         }
     }
 })();
+
+// 旋转
+var rotate = function () {
+    // 测试下一步 临时原点
+    var Origin = function () {
+        this.origin = {
+            x: curr.origin.x,
+            y: curr.origin.y,
+            dir: curr.origin.dir,
+            squareNum: curr.origin.squareNum
+        }
+    }
+    var origin = new Origin();
+    if (checkData(origin, currData)) {
+        clearData();
+        curr.rotate();
+        setData(curr, gameData, curr.origin.dir);
+        refresh(gameData, gameDivs);
+        return true;
+    } else {
+        return false;
+    }
+}
 
 // 下
 var down = function () {
