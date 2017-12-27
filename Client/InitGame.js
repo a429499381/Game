@@ -67,7 +67,7 @@ var initData = function () {
 // 当前方块
 var curr = new Square();
 var currData = curr.getSquare();
-console.log(currData);
+
 // 下一步方块
 var next = new Square();
 nextData = next.getSquare();
@@ -91,11 +91,11 @@ var setData = function (currObj, datas) {
 // 清楚数据
 var clearData = function () {
     for (var i = 0; i < currData.length; i++) {
-       for(var j = 0; j < currData[i].length; j++) {
-           if(currData[i][j] !== 0) {
-               gameData[curr.origin.x + i][curr.origin.y +j] = 0;
-           }
-       }
+        for (var j = 0; j < currData[i].length; j++) {
+            if (currData[i][j] !== 0) {
+                gameData[curr.origin.x + i][curr.origin.y + j] = 0;
+            }
+        }
     }
 };
 
@@ -115,12 +115,11 @@ var refresh = function (datas, DomDivs) {
 };
 
 
-
 // 数据检查
 var checkData = function (curr, currData) {
     for (var i = 0; i < currData.length; i++) {
         for (var j = 0; j < currData[i].length; j++) {
-            if(currData[i][j] !== 0) {
+            if (currData[i][j] !== 0) {
                 if (!checkBorder(curr, i, j)) {
                     return false;
                 }
@@ -175,11 +174,9 @@ var down = function () {
         }
     }
     var downOrigin = new downOrigin();
-    if(checkData(downOrigin
-            , currData)) {
+    if (checkData(downOrigin, currData)) {
         clearData();
         curr.down()
-        console.log(curr.origin.x);
         setData(curr, gameData);
         refresh(gameData, gameDivs);
     }

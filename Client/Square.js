@@ -152,13 +152,13 @@ var Square = function () {
         if (squareNum === 0) {
             return that.squareData0[dir ? dir : dirNum];
         } else if (squareNum === 1) {
-            return that.squareData0[dir ? dir : dirNum]
+            return that.squareData1[dir ? dir : dirNum]
         } else if (squareNum === 2) {
-            return that.squareData0[dir ? dir : dirNum]
+            return that.squareData2[dir ? dir : dirNum]
         } else if (squareNum === 3) {
-            return that.squareData0[dir ? dir : dirNum]
+            return that.squareData3[dir ? dir : dirNum]
         } else if (squareNum === 4) {
-            return that.squareData0[dir ? dir : dirNum]
+            return that.squareData4[dir ? dir : dirNum]
         }
         return false;
     };
