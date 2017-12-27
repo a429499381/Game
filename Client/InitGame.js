@@ -167,22 +167,67 @@ var keyEvent = (function () {
 
 // 下
 var down = function () {
-    var downOrigin = function () {
+    // 测试下一步 临时原点
+    var Origin = function () {
         this.origin = {
             x: curr.origin.x + 1,
-            y: curr.origin.y + 1
+            y: curr.origin.y
         }
     }
-    var downOrigin = new downOrigin();
-    if (checkData(downOrigin, currData)) {
+    var origin = new Origin();
+    if (checkData(origin, currData)) {
         clearData();
         curr.down()
         setData(curr, gameData);
         refresh(gameData, gameDivs);
+        return true;
+    } else {
+        return false;
     }
-
-
 }
+
+// 下坠
+var fastDown = function () {
+    while (down()) {
+        down();
+    }
+}
+
+// 左
+var left = function () {
+    var Origin = function () {
+        this.origin = {
+            x: curr.origin.x,
+            y: curr.origin.y -1
+        }
+    }
+    var origin = new Origin();
+    if (checkData(origin, currData)) {
+        clearData();
+        curr.left();
+        setData(curr, gameData);
+        refresh(gameData, gameDivs);
+    }
+}
+
+
+// 左
+var right = function () {
+    var Origin = function () {
+        this.origin = {
+            x: curr.origin.x,
+            y: curr.origin.y + 1
+        }
+    }
+    var origin = new Origin();
+    if (checkData(origin, currData)) {
+        clearData();
+        curr.right();
+        setData(curr, gameData);
+        refresh(gameData, gameDivs);
+    }
+}
+
 
 
 initData();
