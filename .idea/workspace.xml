@@ -4,6 +4,7 @@
     <list default="true" id="dd75c748-42c5-49cb-95b0-7fc7a83c4613" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/InitGame.js" afterPath="$PROJECT_DIR$/Client/InitGame.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Ui.css" afterPath="$PROJECT_DIR$/Client/Ui.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,8 +33,8 @@
       <file leaf-file-name="Main.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/Main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+            <state relative-caret-position="75">
+              <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -42,8 +43,8 @@
       <file leaf-file-name="InitGame.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="273" column="30" lean-forward="true" selection-start-line="273" selection-start-column="30" selection-end-line="273" selection-end-column="30" />
+            <state relative-caret-position="309">
+              <caret line="268" column="49" lean-forward="true" selection-start-line="268" selection-start-column="49" selection-end-line="268" selection-end-column="49" />
               <folding>
                 <element signature="e#183#905#0" expanded="false" />
                 <element signature="e#922#996#0" expanded="false" />
@@ -57,7 +58,6 @@
                 <element signature="e#5512#5558#0" expanded="false" />
                 <element signature="e#5588#5973#0" expanded="false" />
                 <element signature="e#6004#6390#0" expanded="false" />
-                <element signature="e#6425#6640#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -105,7 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Client/Ui.css" />
         <option value="$PROJECT_DIR$/Client/SquareRandom.js" />
         <option value="$PROJECT_DIR$/Client/Main.html" />
         <option value="chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/content.bundle.js" />
@@ -113,6 +112,7 @@
         <option value="vm:1175" />
         <option value="vm:720" />
         <option value="$PROJECT_DIR$/Client/Square.js" />
+        <option value="$PROJECT_DIR$/Client/Ui.css" />
         <option value="$PROJECT_DIR$/Client/InitGame.js" />
       </list>
     </option>
@@ -600,11 +600,18 @@
       <option name="project" value="LOCAL" />
       <updated>1514394034047</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="  自动下落 固定OK">
+      <created>1514396148889</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1514396148889</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52051000" />
+    <option name="totallyTimeSpent" value="53021000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -719,7 +726,8 @@
     <MESSAGE value="  旋转 边界检查OK" />
     <MESSAGE value="   去掉多余 全局变量" />
     <MESSAGE value="    自动循环 下落" />
-    <option name="LAST_COMMIT_MESSAGE" value="    自动循环 下落" />
+    <MESSAGE value="  自动下落 固定OK" />
+    <option name="LAST_COMMIT_MESSAGE" value="  自动下落 固定OK" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -901,21 +909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/Ui.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="2" lean-forward="false" selection-start-line="25" selection-start-column="2" selection-end-line="25" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/Main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Client/Square.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -936,10 +929,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Client/Ui.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="38" column="30" lean-forward="false" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/Main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="273" column="30" lean-forward="true" selection-start-line="273" selection-start-column="30" selection-end-line="273" selection-end-column="30" />
+        <state relative-caret-position="309">
+          <caret line="268" column="49" lean-forward="true" selection-start-line="268" selection-start-column="49" selection-end-line="268" selection-end-column="49" />
           <folding>
             <element signature="e#183#905#0" expanded="false" />
             <element signature="e#922#996#0" expanded="false" />
@@ -953,7 +962,6 @@
             <element signature="e#5512#5558#0" expanded="false" />
             <element signature="e#5588#5973#0" expanded="false" />
             <element signature="e#6004#6390#0" expanded="false" />
-            <element signature="e#6425#6640#0" expanded="false" />
           </folding>
         </state>
       </provider>

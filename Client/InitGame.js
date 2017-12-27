@@ -264,16 +264,27 @@ var fixed = function () {
     }
 }
 
+// game over
+var gameOver = function () {
+    for(var y = 0; y < gameData[0].length; y++) {
+        if(gameData[0][y] === 2) {
+            clearInterval(time);
+            console.log('游戏失败, 再接再厉');
+            return false;
+        }
+    }
+    return true;
+}
+
 // 自动下移动
-var TIME = 500;
+var TIME = 800;
 var autoMove = function () {
     var move = function () {
         if (down()) {
             down()
         } else {
-            console.log(curr);
+            gameOver();
             curr = next;
-            console.log(curr);
             next = new Square();
             setData(curr, gameData);
             refresh(gameData, gameDivs);
