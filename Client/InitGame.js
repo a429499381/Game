@@ -66,33 +66,32 @@ var initData = function () {
 
 // 当前方块
 var curr = new Square();
-var currData = curr.getSquare();
 
 // 下一步方块
 var next = new Square();
 nextData = next.getSquare();
 
 // 设置数据
-var setData = function (currObj, datas, dir) {
-    var square = dir ? currObj.getSquare(dir) : currObj.getSquare();
-    for (var x = 0; x < square.length; x++) {
-        for (var y = 0; y < square[0].length; y++) {
-            if (square[x][y] !== 0) {
+var setData = function (currObj, datas) {
+    for (var x = 0; x < currObj.data.length; x++) {
+        for (var y = 0; y < currObj.data[0].length; y++) {
+            if (currObj.data[x][y] !== 0) {
                 // 如果 该位置 为 0 才能设置
-                if (datas[curr.origin.x + x][curr.origin.y + y] === 0) {
-                    datas[curr.origin.x + x][curr.origin.y + y] = square[x][y];
+                if (datas[currObj.origin.x + x][currObj.origin.y + y] === 0) {
+                    datas[currObj.origin.x + x][currObj.origin.y + y] = currObj.data[x][y];
                 }
-
             }
         }
     }
 };
 
 // 清楚数据
-var clearData = function () {
-    for (var i = 0; i < currData.length; i++) {
-        for (var j = 0; j < currData[i].length; j++) {
+var clearData = function (curr) {
+    for (var i = 0; i < curr.data.length; i++) {
+        for (var j = 0; j < curr.data[i].length; j++) {
+            if(curr.data[i][j] !== 0) {
                 gameData[curr.origin.x + i][curr.origin.y + j] = 0;
+            }
         }
     }
 };
@@ -170,19 +169,18 @@ var rotate = function () {
         this.origin = {
             x: curr.origin.x,
             y: curr.origin.y,
-            dir: curr.origin.dir,
+            dir: curr.origin.dir + 1 === 4 ? 0 : curr.origin.dir + 1,
             squareNum: curr.origin.squareNum
         }
     }
     var origin = new Origin();
-    if (checkData(origin, currData)) {
-        clearData();
+    if (checkData(curr,  curr.getSquare(origin.origin.dir))) {
+        clearData(curr);
         curr.rotate();
-        setData(curr, gameData, curr.origin.dir);
+        setData(curr, gameData);
         refresh(gameData, gameDivs);
+        clearData(curr);
         return true;
-    } else {
-        return false;
     }
 }
 
@@ -196,8 +194,9 @@ var down = function () {
         }
     }
     var origin = new Origin();
-    if (checkData(origin, currData)) {
-        clearData();
+
+    if (checkData(origin, curr.data)) {
+        clearData(curr);
         curr.down()
         setData(curr, gameData);
         refresh(gameData, gameDivs);
@@ -223,16 +222,18 @@ var left = function () {
         }
     }
     var origin = new Origin();
-    if (checkData(origin, currData)) {
-        clearData();
-        curr.left();
+    if (checkData(origin, curr.data)) {
+        clearData(curr);
+        curr.left()
         setData(curr, gameData);
         refresh(gameData, gameDivs);
+        return true;
+    } else {
+        return false;
     }
 }
 
-
-// 左
+// 右
 var right = function () {
     var Origin = function () {
         this.origin = {
@@ -241,11 +242,14 @@ var right = function () {
         }
     }
     var origin = new Origin();
-    if (checkData(origin, currData)) {
-        clearData();
-        curr.right();
+    if (checkData(origin, curr.data)) {
+        clearData(curr);
+        curr.right()
         setData(curr, gameData);
         refresh(gameData, gameDivs);
+        return true;
+    } else {
+        return false;
     }
 }
 
