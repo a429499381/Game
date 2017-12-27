@@ -280,6 +280,12 @@ var gameOver = function () {
 var removeY = function () {
     var max = 0;
     var n = 0;
+    var remove = function (x) {
+        for(var j = 0; j < gameData[0].length; j++) {
+            gameData[x][j] = 0;
+        }
+    }
+
     for(var i = gameData.length - 1; i >= 0; i--) {
         max = 0;
         n = 0;
@@ -295,10 +301,13 @@ var removeY = function () {
                 max++;
                 if(max === 10) {
                     console.log('要消除第',i,'行');
+                    remove(i);
                 }
             }
         }
     }
+
+
 }
 
 // 自动下移动
