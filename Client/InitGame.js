@@ -254,9 +254,9 @@ var right = function () {
 
 // 固定方块
 var fixed = function () {
-    for(var i = gameData.length - 1; i >= 0; i--) {
-        for(var j = 0; j < gameData[0].length; j++) {
-            if(gameData[i][j] === 1) {
+    for (var i = gameData.length - 1; i >= 0; i--) {
+        for (var j = 0; j < gameData[0].length; j++) {
+            if (gameData[i][j] === 1) {
                 gameData[i][j] = 2;
             }
         }
@@ -266,8 +266,8 @@ var fixed = function () {
 
 // game over
 var gameOver = function () {
-    for(var y = 0; y < gameData[0].length; y++) {
-        if(gameData[0][y] === 2) {
+    for (var y = 0; y < gameData[0].length; y++) {
+        if (gameData[0][y] === 2) {
             clearInterval(time);
             console.log('游戏失败, 再接再厉');
             return false;
@@ -280,34 +280,69 @@ var gameOver = function () {
 var removeY = function () {
     var max = 0;
     var n = 0;
+    var removeN = null;
+    var nllN = null;
+
+    // 消除 当前行
     var remove = function (x) {
-        for(var j = 0; j < gameData[0].length; j++) {
+        for (var j = 0; j < gameData[0].length; j++) {
             gameData[x][j] = 0;
         }
     }
 
-    for(var i = gameData.length - 1; i >= 0; i--) {
-        max = 0;
-        n = 0;
-        for(var j = 0; j < gameData[0].length; j++) {
-            if(gameData[i][j] === 0) {
-                n++;
-                if(n === 10) {
-                    console.log(i,'之后没有要检查的了')
-                    return false;
-                }
-            }
-            if(gameData[i][j] === 2) {
-                max++;
-                if(max === 10) {
-                    console.log('要消除第',i,'行');
-                    remove(i);
+    var removeDown = function () {
+        // 消行后， 要下移的行
+        console.log("要下的行" + nllN)
+        console.log("要下的行" + removeN)
+        for (var i = nllN + 1; i <= removeN; i++) {
+            for (var j = 0; j < gameData[0].length; j++) {
+                if(gameData[i][j] === 2) {
+                    gameData[i + 1][j] = gameData[i][j];
                 }
             }
         }
     }
 
+    var checkRemove =function () {
+        for (var i = gameData.length - 1; i >= 0; i--) {
+            max = 0;
+            n = 0;
+            for (var j = 0; j < gameData[0].length; j++) {
+                // 一行全部为 2  要消除
+                if (gameData[i][j] === 2) {
+                    max++;
+                    if (max === 10) {
+                        removeN = i;
+                        console.log('要消除第', i, '行');
+                        remove(i);
+                        removeDown();
+                        removeN = null;
+                        return false;
+                    }
+                }
 
+                // 一行全部为 0  停止检查
+                if (gameData[i][j] === 0) {
+                    n++;
+                    if (n === 10) {
+                        nllN = i;
+                        console.log(i, '之后没有要检查的了')
+                        return false;
+                    }
+                }
+
+
+
+
+            }
+
+        }
+    }
+
+
+
+
+    checkRemove();
 }
 
 // 自动下移动
