@@ -281,20 +281,29 @@ var gameOver = function () {
 var removeY = function () {
     var lock = true;
     var nullN = null;
+    var nullLock = true;
     for (var x = (gameData.length - 1); x >= 0; x--) {
+        lock = true;
         // 检测最高一层的空行
-        for (var x = (gameData.length - 1); x >= 0; x--) {
+        for (var v = gameData.length - 1; v >= 0; v--) {
+            var temp = 0;
             for (var n = 0; n < gameData[0].length; n++) {
-                if(gameData[x][n] !== 2   gameData[x][n] !== 1) {
-                    nullN = x;
-                    return;
+                if (gameData[v][n] !== 0) {
+                    break;
+                } else {
+                    temp++;
+                    if (temp === 10 && nullLock) {
+                        nullLock = false;
+                        nullN = v;
+                    }
+
                 }
             }
         }
 
 
+        // 不是 要 消除的行 关闭锁
         for (var y = 0; y < gameData[0].length; y++) {
-            console.log(x, y);
             if (gameData[x][y] !== 2) {
                 lock = false;
                 break;
@@ -302,14 +311,14 @@ var removeY = function () {
         }
 
 
-        if (lock) {
+        if (lock) { // 锁开启状态 消除行  下移行
             for (var i = x; i > nullN; i--) {
-                for(var i1 = 0; i1 < gameData[0].length; i1++) {
-                    gameData[i][i1] = gameData[i -1][i1];
+                for (var i1 = 0; i1 < gameData[0].length; i1++) {
+                    gameData[i][i1] = gameData[i - 1][i1];
                 }
             }
-            for(var i2 = 0; i2 < gameData[0].length; i2++) {
-                gameData[i][i2] = 0;
+            for (var i2 = nullN; i2 < gameData[0].length; i2++) {
+                gameData[nullN][i2] = 0;
             }
             x++;
         }
