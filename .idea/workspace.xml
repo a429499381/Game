@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd75c748-42c5-49cb-95b0-7fc7a83c4613" name="Default" comment="">
+    <list default="true" id="dd75c748-42c5-49cb-95b0-7fc7a83c4613" name="Default" comment="   消行处理  OK">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/InitGame.js" afterPath="$PROJECT_DIR$/Client/InitGame.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Square.js" afterPath="$PROJECT_DIR$/Client/Square.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -43,8 +42,8 @@
       <file leaf-file-name="InitGame.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="309" column="13" lean-forward="true" selection-start-line="309" selection-start-column="13" selection-end-line="309" selection-end-column="13" />
+            <state relative-caret-position="336">
+              <caret line="320" column="43" lean-forward="false" selection-start-line="320" selection-start-column="43" selection-end-line="320" selection-end-column="43" />
               <folding>
                 <element signature="e#183#905#0" expanded="false" />
                 <element signature="e#922#996#0" expanded="false" />
@@ -28617,11 +28616,18 @@
       <option name="project" value="LOCAL" />
       <updated>1514398052964</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="   消行处理  OK">
+      <created>1514561057288</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1514561057288</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69680000" />
+    <option name="totallyTimeSpent" value="70616000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -28740,11 +28746,12 @@
     <MESSAGE value="  自动下落 固定OK" />
     <MESSAGE value="  游戏结束检查。" />
     <MESSAGE value="   消行处理" />
-    <option name="LAST_COMMIT_MESSAGE" value="   消行处理" />
+    <MESSAGE value="   消行处理  OK" />
+    <option name="LAST_COMMIT_MESSAGE" value="   消行处理  OK" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="107" />
+      <option name="time" value="111" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JavascriptDebugType">
@@ -28929,14 +28936,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/Main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Client/Square.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -28956,10 +28955,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Client/Main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Client/InitGame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="309" column="13" lean-forward="true" selection-start-line="309" selection-start-column="13" selection-end-line="309" selection-end-column="13" />
+        <state relative-caret-position="336">
+          <caret line="320" column="43" lean-forward="false" selection-start-line="320" selection-start-column="43" selection-end-line="320" selection-end-column="43" />
           <folding>
             <element signature="e#183#905#0" expanded="false" />
             <element signature="e#922#996#0" expanded="false" />

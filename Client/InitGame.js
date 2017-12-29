@@ -317,9 +317,11 @@ var removeY = function () {
                     gameData[i][i1] = gameData[i - 1][i1];
                 }
             }
-            for (var i2 = nullN; i2 < gameData[0].length; i2++) {
-                gameData[nullN][i2] = 0;
-            }
+            // 此行 无法理解！！！！
+            // for (var i1 = 0; i1< gameData[0].length; i1++) {
+            //     console.log(gameData[0][i1]);
+            //     gameData[0][i1] = 0;
+            // }
             x++;
         }
     }
