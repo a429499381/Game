@@ -276,74 +276,46 @@ var gameOver = function () {
     return true;
 }
 
+
 // 消行
 var removeY = function () {
-    var max = 0;
-    var n = 0;
-    var removeN = null;
-    var nllN = null;
-
-    // 消除 当前行
-    var remove = function (x) {
-        for (var j = 0; j < gameData[0].length; j++) {
-            gameData[x][j] = 0;
-        }
-    }
-
-    var removeDown = function () {
-        // 消行后， 要下移的行
-        console.log("要下的行" + nllN)
-        console.log("要下的行" + removeN)
-        for (var i = nllN + 1; i <= removeN; i++) {
-            for (var j = 0; j < gameData[0].length; j++) {
-                if(gameData[i][j] === 2) {
-                    gameData[i + 1][j] = gameData[i][j];
+    var lock = true;
+    var nullN = null;
+    for (var x = (gameData.length - 1); x >= 0; x--) {
+        // 检测最高一层的空行
+        for (var x = (gameData.length - 1); x >= 0; x--) {
+            for (var n = 0; n < gameData[0].length; n++) {
+                if(gameData[x][n] !== 2   gameData[x][n] !== 1) {
+                    nullN = x;
+                    return;
                 }
             }
         }
-    }
-
-    var checkRemove =function () {
-        for (var i = gameData.length - 1; i >= 0; i--) {
-            max = 0;
-            n = 0;
-            for (var j = 0; j < gameData[0].length; j++) {
-                // 一行全部为 2  要消除
-                if (gameData[i][j] === 2) {
-                    max++;
-                    if (max === 10) {
-                        removeN = i;
-                        console.log('要消除第', i, '行');
-                        remove(i);
-                        removeDown();
-                        removeN = null;
-                        return false;
-                    }
-                }
-
-                // 一行全部为 0  停止检查
-                if (gameData[i][j] === 0) {
-                    n++;
-                    if (n === 10) {
-                        nllN = i;
-                        console.log(i, '之后没有要检查的了')
-                        return false;
-                    }
-                }
 
 
-
-
+        for (var y = 0; y < gameData[0].length; y++) {
+            console.log(x, y);
+            if (gameData[x][y] !== 2) {
+                lock = false;
+                break;
             }
+        }
 
+
+        if (lock) {
+            for (var i = x; i > nullN; i--) {
+                for(var i1 = 0; i1 < gameData[0].length; i1++) {
+                    gameData[i][i1] = gameData[i -1][i1];
+                }
+            }
+            for(var i2 = 0; i2 < gameData[0].length; i2++) {
+                gameData[i][i2] = 0;
+            }
+            x++;
         }
     }
-
-
-
-
-    checkRemove();
 }
+
 
 // 自动下移动
 var TIME = 800;
