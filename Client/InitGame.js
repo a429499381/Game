@@ -1,6 +1,8 @@
 // 传递进来的游戏主体 div
 var gameDiv = document.getElementById('game');
 var nextDiv = document.getElementById('next');
+var gameTimeDiv = document.getElementById('time');
+var gameScoreDiv = document.getElementById('score');
 var gameDivs = [];
 var nextDivs = [];
 
@@ -37,6 +39,11 @@ var nextData = [
 // 定时器
 var time = null;
 
+// 记时
+var gameTime = 0;
+// 记分
+var gameScore = 0;
+
 // 初始数据模版
 var initData = function () {
     var squareData = function (datas, dataDivs, domDiv) {
@@ -59,6 +66,14 @@ var initData = function () {
     };
     squareData(gameData, gameDivs, gameDiv);
     squareData(nextData, nextDivs, nextDiv);
+}
+
+// 记分 记时 方法
+var upTime = function (time) {
+    gameTimeDiv.innerHTML = time;
+}
+var upSocre = function (score) {
+    gameScoreDiv.innerHTML = score;
 }
 
 
@@ -312,6 +327,8 @@ var removeY = function () {
 
 
         if (lock) { // 锁开启状态 消除行  下移行
+            gameScore += 10;
+            upSocre(gameScore);
             for (var i = x; i > nullN; i--) {
                 for (var i1 = 0; i1 < gameData[0].length; i1++) {
                     gameData[i][i1] = gameData[i - 1][i1];
@@ -329,9 +346,17 @@ var removeY = function () {
 
 
 // 自动下移动
-var TIME = 800;
+var TIME = 500;
 var autoMove = function () {
+    var n = 0;
     var move = function () {
+        n++; // 记时统计
+        if (n === 2) {
+            n = 0;
+            gameTime++;
+            upTime(gameTime);
+        }
+
         if (down()) {
             down()
         } else {
@@ -354,6 +379,7 @@ initData();
 setData(curr, gameData);
 refresh(gameData, gameDivs);
 refresh(next.data, nextDivs);
+upSocre(gameScore);
 
 // 自动下移
 autoMove();
