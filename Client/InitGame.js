@@ -1,10 +1,11 @@
 // 传递进来的游戏主体 div
-var gameDiv = document.getElementById('game');
-var nextDiv = document.getElementById('next');
-var gameTimeDiv = document.getElementById('time');
-var gameScoreDiv = document.getElementById('score');
+var gameDiv = document.getElementById('localGame');
+var nextDiv = document.getElementById('localNext');
+var gameTimeDiv = document.getElementById('localTime');
+var gameScoreDiv = document.getElementById('localScore');
 var gameDivs = [];
 var nextDivs = [];
+
 
 // 游戏主体数据模版 10*20
 var gameData = [
@@ -45,8 +46,8 @@ var gameTime = 0;
 var gameScore = 0;
 
 // 初始数据模版
-var initData = function () {
-    var squareData = function (datas, dataDivs, domDiv) {
+var InitData = function () {
+    this.squareData = function (datas, dataDivs, domDiv) {
         for (var i = 0; i < datas.length; i++) {
             var data = []
             for (var j = 0; j < datas[0].length; j++) {
@@ -348,9 +349,9 @@ var removeY = function () {
 var randomCreateline = function (lines) {
     // 所有不为0的数据全部上移一行
     for (var line = 1; line < gameData.length; line++) {
-        for (var s= 0; s < gameData[0].length; s++) {
+        for (var s = 0; s < gameData[0].length; s++) {
             // 空行检测
-            if (gameData[line][s] !== 0 ) {
+            if (gameData[line][s] !== 0) {
                 if (line + lines > gameData.length) {
                     gameOver(); // 游戏结束
 
@@ -365,11 +366,11 @@ var randomCreateline = function (lines) {
 
 
     // 将产生的新数据写入底部行
-    for(var l = 0; l < lines; l++) {
-       for(var y = 0; y < gameData[0].length; y++) {
-               gameData[gameData.length - 1][y] = Math.ceil(Math.random() * 2) - 1 === 1 ? 2 : 0;
+    for (var l = 0; l < lines; l++) {
+        for (var y = 0; y < gameData[0].length; y++) {
+            gameData[gameData.length - 1][y] = Math.ceil(Math.random() * 2) - 1 === 1 ? 2 : 0;
 
-       }
+        }
     }
 
 }
@@ -405,7 +406,7 @@ var autoMove = function () {
 }
 
 
-initData();
+InitData();
 setData(curr, gameData);
 refresh(gameData, gameDivs);
 refresh(next.data, nextDivs);

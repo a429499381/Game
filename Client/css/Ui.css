@@ -3,6 +3,16 @@ body {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    text-align: center;
+}
+.localGame {
+    position: relative;
+    text-align: center;
+}
+.remoteGame {
+    display: inline-block;
+    position: relative;
+    text-align: right;
 }
 .game {
     width: 200px;
@@ -10,7 +20,7 @@ body {
     position: absolute;
     top: 20px;
     left: 20px;
-    border: 1px solid #ff8484;
+    border: 1px solid #678bff;
     border-top: none;
 }
 
@@ -22,9 +32,12 @@ body {
     left: 240px;
 }
 .next {
-    width: 80px;
-    height: 80px;
-    border: 1px solid #ff8484;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 82px;
+    height: 82px;
+    border: 1px solid #678bff;
 }
 
 .info {
