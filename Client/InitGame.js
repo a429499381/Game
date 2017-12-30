@@ -344,6 +344,42 @@ var removeY = function () {
     }
 }
 
+// 指定增加N行随机方块
+var randomCreateline = function (lines) {
+    var lineData = []
+    // 产生随机 0 1 行
+    for (var i = 0; i < lines; i++) {
+        for (var j = 0; j < gameData[0].length; j++) {
+            lineData.push(Math.ceil(Math.random() * 2) - 1);
+
+        }
+    }
+
+    // 所有不为0的数据全部上移一行
+    for (var line = 1; line < gameData.length; line++) {
+        for (var s= 0; s < gameData[0].length; s++) {
+            // 空行检测
+            if (gameData[line][s] !== 0 ) {
+                console.log(line,s);
+                if (line + lines >= gameData.length) {
+                    gameOver(); // 游戏结束
+
+                } else {
+                    gameData[line - lines][s] = gameData[line][s];
+
+                }
+            }
+        }
+    }
+
+
+    // 将产生的新数据写入底部行
+    for(var l = 0; l < lines; l++) {
+        gameData[l].push(lineData[l]);
+
+    }
+
+}
 
 // 自动下移动
 var TIME = 500;
@@ -360,6 +396,7 @@ var autoMove = function () {
         if (down()) {
             down()
         } else {
+            // randomCreateline(1); // 增加指定行
             removeY();
             gameOver();
             curr = next;
