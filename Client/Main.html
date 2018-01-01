@@ -6,34 +6,19 @@
     <link rel="stylesheet" href="Ui.css">
 </head>
 <body>
-    <div class="localGame">
-        <div id="localGame" class="game"></div>
-        <div class="nexts">
-            <div id="localNext" class="next"></div>
-            <div id="localInfo" class="info">
-                已用时间:<span id="localTime">&nbsp;</span>秒
-                <p></p>
-                得分: <span id="localScore"></span>分
-            </div>
+    <div id="game" class="game"></div>
+    <div class="nexts">
+        <div id="next" class="next"></div>
+        <div id="info" class="info">
+            已用时间:<span id="time">&nbsp;</span>秒
+            <p></p>
+            得分: <span id="score"></span>分
         </div>
-
-    </div>
-
-    <div class="remoteGame">
-        <div id="remoteGame" class="game"></div>
-        <div class="nexts">
-            <div id="remoteNext" class="next"></div>
-            <div id="remoteInfo" class="info">
-                已用时间:<span id="remoteTime">&nbsp;</span>秒
-                <p></p>
-                得分: <span id="remoteScore"></span>分
-            </div>
-        </div>
-
     </div>
 
     <script src="Square.js"></script>
     <script src="InitGame.js"></script>
-    <script src="Remote.js"></script>
+    <script src="LocalGame.js"></script>
+    <script src="RemoteGame.js"></script>
 </body>
 </html>
