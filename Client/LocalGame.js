@@ -1,4 +1,5 @@
 var localGame = function () {
+    var game;
     var doms = {
         gameDiv: document.getElementById('game'),
         nextDiv: document.getElementById('next'),
@@ -6,22 +7,10 @@ var localGame = function () {
         gameScoreDiv: document.getElementById('score')
     }
     var start = function () {
-
-        var game = new Game();
-
-        game.initData(doms);
-        game.setData();
-        game.refresh(gameData, gameDivs);
-//         initData();
-//         setData(curr, gameData);
-//         refresh(gameData, gameDivs);
-//         refresh(next.data, nextDivs);
-//         upSocre(gameScore);
-//
-// // 自动下移
-//         autoMove();
+        game = new Game(doms);
+        game.init();
     }
     this.start = start;
 }
-console.log(7);
+console.log(14);
 new localGame().start();

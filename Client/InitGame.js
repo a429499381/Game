@@ -1,6 +1,12 @@
-var Game = function () {
+var Game = function (doms) {
+    var gameDiv = doms.gameDiv;
+    var nextDiv = doms.nextDiv;
+    var gameTimeDiv = doms.gameTimeDiv;
+    var gameScoreDiv = doms.gameScoreDiv;
     var gameDivs = [];
     var nextDivs = [];
+    var curr;
+    var next;
 
     // 游戏主体数据模版 10*20
     var gameData = [
@@ -31,10 +37,6 @@ var Game = function () {
         [0, 0, 0, 0],
         [0, 0, 0, 0]
     ];
-    // 当前方块
-    var curr = new Square();
-    // 下一步方块
-    var next = new Square();
 
 // 定时器
     var time = null;
@@ -45,35 +47,32 @@ var Game = function () {
     var gameScore = 0;
 
 // 初始数据模版
-    var initData = function (doms) {
-        var squareData = function (datas, dataDivs, domDiv) {
-            for (var i = 0; i < datas.length; i++) {
-                var data = []
-                for (var j = 0; j < datas[0].length; j++) {
-                    // 在主体游戏框架中填充 20*20 的 默认色方块（白色）
-                    var square = document.createElement('div');
-                    square.className = 'none';
-                    square.style.width = 20 + 'px';
-                    square.style.height = 20 + 'px';
-                    square.style.position = 'absolute';
-                    square.style.top = (i * 20) + 'px';
-                    square.style.left = (j * 20) + 'px';
-                    domDiv.appendChild(square);
-                    data.push(square);
-                }
-                dataDivs.push(data);
+    var initData = function (datas, dataDivs, domDiv) {
+        for (var i = 0; i < datas.length; i++) {
+            var data = []
+            for (var j = 0; j < datas[0].length; j++) {
+                // 在主体游戏框架中填充 20*20 的 默认色方块（白色）
+                var square = document.createElement('div');
+                square.className = 'none';
+                square.style.width = 20 + 'px';
+                square.style.height = 20 + 'px';
+                square.style.position = 'absolute';
+                square.style.top = (i * 20) + 'px';
+                square.style.left = (j * 20) + 'px';
+                domDiv.appendChild(square);
+                data.push(square);
             }
-        };
-        squareData(gameData, gameDivs, doms.gameDiv);
-        squareData(nextData, nextDivs, doms.nextDiv);
-    }
+            dataDivs.push(data);
+        }
+    };
+
 
 // 记分 记时 方法
-    var upTime = function (gameTimeDiv, time) {
-        doms.gameTimeDiv.innerHTML = time;
+    var upTime = function (time) {
+        gameTimeDiv.innerHTML = time;
     }
-    var upSocre = function (gameScoreDiv, score) {
-        doms.gameScoreDiv.innerHTML = score;
+    var upSocre = function ( score) {
+        gameScoreDiv.innerHTML = score;
     }
 
 
@@ -152,12 +151,12 @@ var Game = function () {
 
 
 // 键盘控制
-    var keyEvent = (function () {
+    var keyEvent = function () {
         document.onkeydown = function (e) {
             if (e.keyCode === 38) { // up rotate
                 rotate();
             } else if (e.keyCode === 40) { // down
-                down();
+                down(curr);
             } else if (e.keyCode === 37) { // left
                 left();
             } else if (e.keyCode === 39) { // right
@@ -166,7 +165,7 @@ var Game = function () {
                 fastDown();
             }
         }
-    })();
+    };
 
 // 旋转
     var rotate = function () {
@@ -342,9 +341,9 @@ var Game = function () {
     var randomCreateline = function (lines) {
         // 所有不为0的数据全部上移一行
         for (var line = 1; line < gameData.length; line++) {
-            for (var s= 0; s < gameData[0].length; s++) {
+            for (var s = 0; s < gameData[0].length; s++) {
                 // 空行检测
-                if (gameData[line][s] !== 0 ) {
+                if (gameData[line][s] !== 0) {
                     if (line + lines > gameData.length) {
                         gameOver(); // 游戏结束
 
@@ -359,8 +358,8 @@ var Game = function () {
 
 
         // 将产生的新数据写入底部行
-        for(var l = 0; l < lines; l++) {
-            for(var y = 0; y < gameData[0].length; y++) {
+        for (var l = 0; l < lines; l++) {
+            for (var y = 0; y < gameData[0].length; y++) {
                 gameData[gameData.length - 1][y] = Math.ceil(Math.random() * 2) - 1 === 1 ? 2 : 0;
 
             }
@@ -369,14 +368,14 @@ var Game = function () {
     }
 
 // 自动下移动
-    var autoMove = function () {
+    var autoMove = function (doms) {
         var n = 0;
         var move = function () {
             n++; // 记时统计
             if (n === 2) {
                 n = 0;
                 gameTime++;
-                upTime(gameTime);
+                upTime(doms, gameTime);
             }
 
             if (down()) {
@@ -397,8 +396,24 @@ var Game = function () {
         time = setInterval(move, TIME);
     }
 
+    // 初始化
+    var init = function () {
+        // 当前方块
+        curr = new Square();
+        // 下一步方块
+        next = new Square();
 
-    this.initData = initData;
+        keyEvent();
+        initData(gameData, gameDivs, gameDiv);
+        initData(nextData, nextDivs, nextDiv);
+        setData(curr, gameData);
+        setData(next, nextData);
+        refresh(gameData, gameDivs);
+        refresh(next.data, nextDivs);
+        autoMove();
+    }
+
+    this.init = init;
     this.upTime = upTime;
     this.upSocre = upSocre;
     this.setData = setData;
@@ -407,14 +422,14 @@ var Game = function () {
     this.checkData = checkData;
     this.checkBorder = checkBorder;
     this.rotate = rotate;
-    this.down = initData;
-    this.fastDown = upTime;
-    this.left = upSocre;
-    this.right = setData;
-    this.fixed = clearData;
-    this.gameOver = refresh;
-    this.removeY = checkData;
-    this.randomCreateline = checkBorder;
+    this.down = down;
+    this.fastDown = fastDown;
+    this.left = left;
+    this.right = right;
+    this.fixed = fixed;
+    this.gameOver = gameOver;
+    this.removeY = removeY;
+    this.randomCreateline = randomCreateline;
     this.autoMove = autoMove;
 
 }
