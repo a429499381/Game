@@ -318,8 +318,8 @@ var Game = function (doms) {
 
             if (lock) { // 锁开启状态 消除行  下移行
                 gameScore += 10;
-                upTimeSocre(gameScoreDiv,gameScore);
-                if(gameScore % 20 === 0) {
+                upTimeSocre(gameScoreDiv, gameScore);
+                if (gameScore % 20 === 0) {
                     randomCreateline(1); // 增加指定行
 
                 }
@@ -376,7 +376,7 @@ var Game = function (doms) {
             if (n === 2) {
                 n = 0;
                 gameTime++;
-                upTimeSocre(gameTimeDiv,gameTime);
+                upTimeSocre(gameTimeDiv, gameTime);
             }
 
             if (down()) {
@@ -403,18 +403,17 @@ var Game = function (doms) {
         // 下一步方块
         next = new Square();
 
-        keyEvent();
+
         initData(gameData, gameDivs, gameDiv);
         initData(nextData, nextDivs, nextDiv);
         setData(curr, gameData);
         setData(next, nextData);
         refresh(gameData, gameDivs);
         refresh(next.data, nextDivs);
-        autoMove();
     }
-
+    this.keyEvent = keyEvent;
+    this.initData = initData;
     this.init = init;
-    this.gameTimeDiv = gameTimeDiv;
     this.setData = setData;
     this.clearData = clearData;
     this.refresh = refresh;
