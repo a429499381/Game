@@ -68,11 +68,8 @@ var Game = function (doms) {
 
 
 // 记分 记时 方法
-    var upTime = function (time) {
-        gameTimeDiv.innerHTML = time;
-    }
-    var upSocre = function ( score) {
-        gameScoreDiv.innerHTML = score;
+    var upTimeSocre = function (div, time) {
+        div.innerHTML = time;
     }
 
 
@@ -321,7 +318,11 @@ var Game = function (doms) {
 
             if (lock) { // 锁开启状态 消除行  下移行
                 gameScore += 10;
-                upSocre(gameScore);
+                upTimeSocre(gameScoreDiv,gameScore);
+                if(gameScore % 20 === 0) {
+                    randomCreateline(1); // 增加指定行
+
+                }
                 for (var i = x; i > nullN; i--) {
                     for (var i1 = 0; i1 < gameData[0].length; i1++) {
                         gameData[i][i1] = gameData[i - 1][i1];
@@ -375,13 +376,12 @@ var Game = function (doms) {
             if (n === 2) {
                 n = 0;
                 gameTime++;
-                upTime(doms, gameTime);
+                upTimeSocre(gameTimeDiv,gameTime);
             }
 
             if (down()) {
                 down()
             } else {
-                randomCreateline(1); // 增加指定行
                 removeY();
                 gameOver();
                 curr = next;
@@ -414,8 +414,7 @@ var Game = function (doms) {
     }
 
     this.init = init;
-    this.upTime = upTime;
-    this.upSocre = upSocre;
+    this.gameTimeDiv = gameTimeDiv;
     this.setData = setData;
     this.clearData = clearData;
     this.refresh = refresh;
