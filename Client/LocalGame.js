@@ -12,5 +12,5 @@ var localGame = function () {
     }
     this.start = start;
 }
-console.log(15);
+console.log(16);
 new localGame().start();
