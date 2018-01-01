@@ -17,15 +17,14 @@ var remoteGame = function () {
         document.getElementById('rotate').onclick = function () {
             game.rotate();
         };
-        document.getElementById('fixed').onclick = function () {
-            game.fixed();
-
-        };
         document.getElementById('gameOver').onclick = function () {
             game.gameOver();
         };
-        document.getElementById('removeY').onclick = function () {
-            game.removeY();
+        document.getElementById('setTime').onclick = function () {
+            game.upTimeSocre(doms.gameTimeDiv,10);
+        };
+        document.getElementById('setScore').onclick = function () {
+            game.upTimeSocre(doms.gameScoreDiv,1);
         };
         document.getElementById('setData').onclick = function () {
             game.refresh();

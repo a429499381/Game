@@ -411,8 +411,14 @@ var Game = function (doms) {
         refresh(gameData, gameDivs);
         refresh(next.data, nextDivs);
     }
+
+    var gameCallback = function (callback) {
+
+    }
+
     this.keyEvent = keyEvent;
     this.initData = initData;
+    this.upTimeSocre = upTimeSocre;
     this.init = init;
     this.setData = setData;
     this.clearData = clearData;
