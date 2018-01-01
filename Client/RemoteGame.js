@@ -2,10 +2,37 @@ var remoteGame = function () {
     var game;
 
     var bindEvent = function () {
-        document.getElementById('left').onclick = function () { game.left(); };
-        document.getElementById('right').onclick = function () { game.right(); };
-        document.getElementById('down').onclick = function () { game.down(); };
-        document.getElementById('fastDown').onclick = function () { game.fastDown(); }
+        document.getElementById('left').onclick = function () {
+            game.left();
+        };
+        document.getElementById('right').onclick = function () {
+            game.right();
+        };
+        document.getElementById('down').onclick = function () {
+            game.down();
+        };
+        document.getElementById('fastDown').onclick = function () {
+            game.fastDown();
+        };
+        document.getElementById('rotate').onclick = function () {
+            game.rotate();
+        };
+        document.getElementById('fixed').onclick = function () {
+            game.fixed();
+
+        };
+        document.getElementById('gameOver').onclick = function () {
+            game.gameOver();
+        };
+        document.getElementById('removeY').onclick = function () {
+            game.removeY();
+        };
+        document.getElementById('setData').onclick = function () {
+            game.refresh();
+        };
+        document.getElementById('randomCreateline').onclick = function () {
+            game.randomCreateline(1);
+        };
     }
 
     var doms = {
