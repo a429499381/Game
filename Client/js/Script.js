@@ -8,3 +8,6 @@ console.log('socket :' + 1);
 socket.on('waiting', function (str) {
     document.getElementById('waiting').innerHTML = str;
 })
+socket.on('start', function (str) {
+    document.getElementById('waiting').innerHTML = str;
+})

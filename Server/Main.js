@@ -17,11 +17,11 @@ io.on('connection', function (socket) {
     socketMap[clientCount] = socket;
 
     if(clientCount % 2 === 1) {
-        socket.emit('waiting', 'waiting for another person');
+        socket.emit('waiting', '等待其他玩家连接');
 
     } else {
-        socket.emit('start');
-        socketMap[(clientCount -1)].emit('str')
+        socket.emit('start', '准备开始');
+        socketMap[(clientCount -1)].emit('str  OK')
     }
 
     socket.on('disconnect', function () {
