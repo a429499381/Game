@@ -7,7 +7,7 @@ var localGame = function (socket) {
         gameScoreDiv: document.getElementById('localScore')
     }
     var start = function () {
-        game = new Game(doms);
+        game = new Game(doms, socket);
         game.init();
         game.keyEvent();
         game.autoMove();

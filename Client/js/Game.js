@@ -1,4 +1,4 @@
-var Game = function (doms) {
+var Game = function (doms, socket) {
     var gameDiv = doms.gameDiv;
     var nextDiv = doms.nextDiv;
     var gameTimeDiv = doms.gameTimeDiv;
@@ -7,7 +7,8 @@ var Game = function (doms) {
     var nextDivs = [];
     var curr;
     var next;
-
+    var SOCKET;
+    SOCKET = socket;
     // 游戏主体数据模版 10*20
     var gameData = [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -404,7 +405,7 @@ var Game = function (doms) {
         next = new Square();
 
         // 发送 方块类型  方向
-
+        SOCKET.emit('init', {type: curr.origin.squareNum, dir: curr.origin.dir});
 
         initData(gameData, gameDivs, gameDiv);
         initData(nextData, nextDivs, nextDiv);

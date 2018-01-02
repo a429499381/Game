@@ -1,37 +1,12 @@
 var remoteGame = function (socket) {
     var game;
 
-    var bindEvent = function () {
-        document.getElementById('left').onclick = function () {
-            game.left();
-        };
-        document.getElementById('right').onclick = function () {
-            game.right();
-        };
-        document.getElementById('down').onclick = function () {
-            game.down();
-        };
-        document.getElementById('fastDown').onclick = function () {
-            game.fastDown();
-        };
-        document.getElementById('rotate').onclick = function () {
-            game.rotate();
-        };
-        document.getElementById('gameOver').onclick = function () {
-            game.gameOver();
-        };
-        document.getElementById('setTime').onclick = function () {
-            game.upTimeSocre(doms.gameTimeDiv,10);
-        };
-        document.getElementById('setScore').onclick = function () {
-            game.upTimeSocre(doms.gameScoreDiv,1);
-        };
-        document.getElementById('setData').onclick = function () {
-            game.refresh();
-        };
-        document.getElementById('randomCreateline').onclick = function () {
-            game.randomCreateline(1);
-        };
+    // 绑定按钮事件
+    var bindEvents = function () {
+        socket.on('init', function (data) {
+            start(data.type, data.dir);
+            console.log(data);
+        })
     }
 
     var doms = {
@@ -40,10 +15,10 @@ var remoteGame = function (socket) {
         gameTimeDiv: document.getElementById('remoteTime'),
         gameScoreDiv: document.getElementById('remoteScore')
     }
-    var start = function () {
+    var start = function (type, dir) {
         game = new Game(doms);
-        game.init();
+        game.init(dir, type);
     }
-    this.start = start;
-    this.bindEvent = bindEvent;
+
+    bindEvents();
 }
