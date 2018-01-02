@@ -21,7 +21,7 @@ io.on('connection', function (socket) {
 
     } else {
         socket.emit('start');
-        socketMap[(clientCount -1)].emit('start');
+        socketMap[(clientCount -1)].emit('str')
     }
 
     socket.on('disconnect', function () {
