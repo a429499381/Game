@@ -153,14 +153,19 @@ var Game = function (doms, socket) {
         document.onkeydown = function (e) {
             if (e.keyCode === 38) { // up rotate
                 rotate();
+                socket.emit('rotate');
             } else if (e.keyCode === 40) { // down
                 down(curr);
+                socket.emit('down');
             } else if (e.keyCode === 37) { // left
                 left();
+                socket.emit('left');
             } else if (e.keyCode === 39) { // right
                 right();
+                socket.emit('right');
             } else if (e.keyCode === 32) { //  space  下坠
                 fastDown();
+                socket.emit('fastDown');
             }
         }
     };
@@ -206,6 +211,7 @@ var Game = function (doms, socket) {
             return true;
         } else {
             fixed();
+            socket.emit('fixed');
             return false;
         }
     }
@@ -382,6 +388,7 @@ var Game = function (doms, socket) {
 
             if (down()) {
                 down()
+                socket.emit('down');
             } else {
                 removeY();
                 gameOver();
@@ -405,7 +412,7 @@ var Game = function (doms, socket) {
         next = new Square();
 
         // 发送 方块类型  方向
-        SOCKET.emit('init', {type: curr.origin.squareNum, dir: curr.origin.dir});
+        socket.emit('init', {type: curr.origin.squareNum, dir: curr.origin.dir});
 
         initData(gameData, gameDivs, gameDiv);
         initData(nextData, nextDivs, nextDiv);

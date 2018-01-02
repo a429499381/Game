@@ -7,6 +7,24 @@ var remoteGame = function (socket) {
             start(data.type, data.dir);
             console.log(data);
         })
+        socket.on('next', function (data) {
+            console.log(data);
+        })
+        socket.on('next', function (data) {
+            console.log(data);
+        })
+        socket.on('next', function (data) {
+            console.log(data);
+        })
+        socket.on('next', function (data) {
+            console.log(data);
+        })
+        socket.on('next', function (data) {
+            console.log(data);
+        })
+        socket.on('next', function (data) {
+            console.log(data);
+        })
     }
 
     var doms = {
