@@ -403,6 +403,8 @@ var Game = function (doms) {
         // 下一步方块
         next = new Square();
 
+        // 发送 方块类型  方向
+
 
         initData(gameData, gameDivs, gameDiv);
         initData(nextData, nextDivs, nextDiv);

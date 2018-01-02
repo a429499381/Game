@@ -12,6 +12,11 @@ var localGame = function (socket) {
         game.keyEvent();
         game.autoMove();
     }
+
+    socket.on('start', function () {
+        start(); // 收到 start 开始游戏
+    })
+
     this.start = start;
 }
 
