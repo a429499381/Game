@@ -1,4 +1,4 @@
-var remoteGame = function () {
+var remoteGame = function (socket) {
     var game;
 
     var bindEvent = function () {
@@ -47,7 +47,3 @@ var remoteGame = function () {
     this.start = start;
     this.bindEvent = bindEvent;
 }
-console.log(17);
-var remote = new remoteGame();
-remote.start();
-remote.bindEvent();
