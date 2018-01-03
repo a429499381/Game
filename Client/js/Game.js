@@ -165,7 +165,6 @@ var Game = function (doms, socket) {
                 socket.emit('right');
             } else if (e.keyCode === 32) { //  space  下坠
                 fastDown();
-                socket.emit('fastDown');
             }
         }
     };
@@ -326,9 +325,15 @@ var Game = function (doms, socket) {
             if (lock) { // 锁开启状态 消除行  下移行
                 gameScore += 10;
                 upTimeSocre(gameScoreDiv, gameScore);
+
+                // 发送比分
+                socket.emit('upSocre', gameScore);
+
                 if (gameScore % 20 === 0) {
                     randomCreateline(1); // 增加指定行
 
+                    // 发送增加行
+                    socket.emit('randomCreateLine', 1);
                 }
                 for (var i = x; i > nullN; i--) {
                     for (var i1 = 0; i1 < gameData[0].length; i1++) {
@@ -384,11 +389,16 @@ var Game = function (doms, socket) {
                 n = 0;
                 gameTime++;
                 upTimeSocre(gameTimeDiv, gameTime);
+
+                // 发送时间
+                socket.emit('upTime', gameTime);
             }
 
             if (down()) {
-                down()
+                down();
+                // 发送下移命令
                 socket.emit('down');
+
             } else {
                 removeY();
                 gameOver();
@@ -397,6 +407,12 @@ var Game = function (doms, socket) {
                 setData(curr, gameData);
                 refresh(gameData, gameDivs);
                 refresh(next.data, nextDivs);
+
+                // 发送消行，游戏结束检查。。
+                socket.emit('removeY');
+                socket.emit('gameOver');
+                socket.emit('init', {type: curr.origin.squareNum, dir: curr.origin.dir});
+                socket.emit('next', {type: next.origin.squareNum, dir: next.origin.dir});
             }
         }
 
@@ -413,6 +429,7 @@ var Game = function (doms, socket) {
 
         // 发送 方块类型  方向
         socket.emit('init', {type: curr.origin.squareNum, dir: curr.origin.dir});
+        socket.emit('next', {type: next.origin.squareNum, dir: next.origin.dir});
 
         initData(gameData, gameDivs, gameDiv);
         initData(nextData, nextDivs, nextDiv);
@@ -420,10 +437,6 @@ var Game = function (doms, socket) {
         setData(next, nextData);
         refresh(gameData, gameDivs);
         refresh(next.data, nextDivs);
-    }
-
-    var gameCallback = function (callback) {
-
     }
 
     this.keyEvent = keyEvent;

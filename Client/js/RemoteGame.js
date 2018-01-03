@@ -10,19 +10,28 @@ var remoteGame = function (socket) {
         socket.on('next', function (data) {
             console.log(data);
         })
-        socket.on('next', function (data) {
+        socket.on('left', function (data) {
             console.log(data);
         })
-        socket.on('next', function (data) {
+        socket.on('right', function (data) {
             console.log(data);
         })
-        socket.on('next', function (data) {
+        socket.on('down', function (data) {
             console.log(data);
         })
-        socket.on('next', function (data) {
+        socket.on('rotate', function (data) {
             console.log(data);
         })
-        socket.on('next', function (data) {
+        socket.on('randomCreateLine', function (data) {
+            console.log(data);
+        })
+        socket.on('removeY', function (data) {
+            console.log(data);
+        })
+        socket.on('upTime', function (data) {
+            console.log(data);
+        })
+        socket.on('upSocre', function (data) {
             console.log(data);
         })
     }
@@ -34,7 +43,7 @@ var remoteGame = function (socket) {
         gameScoreDiv: document.getElementById('remoteScore')
     }
     var start = function (type, dir) {
-        game = new Game(doms);
+        game = new Game(doms, socket);
         game.init(dir, type);
     }
 

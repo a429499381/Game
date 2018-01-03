@@ -3,84 +3,63 @@ var io = require('socket.io')(app);
 
 var PORT = 3000;
 
+// 客户端计数
+var clientCount = 0;
+
 //  用来存储客户端socket
-var socketMap = [];
-
-// 所有组队的表
-var terams = [];
-
-// 所有客户端 id
-var allMap = [];
-
-var temp = [];
-
-
+var socketMap = {};
 
 app.listen(PORT);
 
-var bingListener = function (socket, event) {
-    socket.on(event, function (data) {
+var bindSocketEvent = function (type, socket) {
+    socket.on(type, function (event) {
         // 发送 接受到 初始化信息 发送给对方
         if(socket.clientNum % 2 === 0) {
-            socketMap[socket.clientNum -1].emit(event, data);
+            socketMap[socket.clientNum -1].emit('init', event);
         } else {
-            socketMap[socket.clientNum + 1].emit(event, data);
+            socketMap[socket.clientNum + 1].emit('init', event);
         }
-
+        console.log(event);
     })
-}
-
-var responseTearm = function (socket, id) {
-            // 随机生成剩余没有组队id数
-            var randdomId = Math.ceil(Math.random() * (socketMap.length -1));
-
-            for(var i = 0; i < terams.length; i++) {
-                for(var j = 0; j < terams[0].length; j++) {
-                    if(terams[i][j] !== id) {
-                        terams.push([id, socketMap[randdomId]]);
-
-                    }
-                }
-            }
 }
 
 io.on('connection', function (socket) {
+    console.log(clientCount);
 
-    temp.push(socket.id);
-    socketMap.push(socket.id);
-    allMap.push(socket.id);
+    clientCount = clientCount + 1;
+    socket.clientNum = clientCount;
+    socketMap[clientCount] = socket;
 
+    console.log(clientCount);
 
-    console.log('temp' + temp);
-   if(temp.length > 0) {
+    if(clientCount % 2 === 1) {
         socket.emit('waiting', '等待其他玩家连接');
 
     } else {
-        socket[temp[0]].emit('start', 'ok');
-        socket[temp[1]].emit('start', 'ok');
-        socketMap.pop();
-        socketMap.pop();
-        terams.push(temp);
-        temp = [];
-
+        socket.emit('start', '准备开始');
+        socketMap[(clientCount -1)].emit('str  OK')
     }
 
-    responseTearm(socket, 'responseTearm');
-    bingListener(socket, 'init');
-    bingListener(socket, 'next');
-    bingListener(socket, 'rotate');
-    bingListener(socket, 'right');
-    bingListener(socket, 'left');
-    bingListener(socket, 'down');
-    bingListener(socket, 'fastDown');
-    bingListener(socket, 'fixed');
+
+    bindSocketEvent('rotate', socket);
+    bindSocketEvent('down', socket);
+    bindSocketEvent('left', socket);
+    bindSocketEvent('right', socket);
+    bindSocketEvent('removeY', socket);
+    bindSocketEvent('gameOver', socket);
+    bindSocketEvent('init', socket);
+    bindSocketEvent('next', socket);
+
+    socket.on('init', function (data) {
+        // 发送 接受到 初始化信息 发送给对方
+        if(socket.clientNum % 2 === 0) {
+            socketMap[socket.clientNum -1].emit('init', data);
+        } else {
+            socketMap[socket.clientNum + 1].emit('init', data);
+        }
+        console.log(data);
+    })
 
     socket.on('disconnect', function () {
-        console.log(socketMap);
-
     })
 })
-
-console.log('服务端启动' + PORT);
-
-
