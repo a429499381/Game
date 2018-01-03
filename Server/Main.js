@@ -15,11 +15,11 @@ var bindSocketEvent = function (type, socket) {
     socket.on(type, function (event) {
         // 发送 接受到 初始化信息 发送给对方
         if(socket.clientNum % 2 === 0) {
-            socketMap[socket.clientNum -1].emit('init', event);
+            socketMap[socket.clientNum -1].emit(type, type);
         } else {
-            socketMap[socket.clientNum + 1].emit('init', event);
+            socketMap[socket.clientNum + 1].emit(type, type);
         }
-        console.log(event);
+        console.log(type);
     })
 }
 

@@ -2,7 +2,7 @@ var remoteGame = function (socket) {
     var game;
 
     // 绑定按钮事件
-    var bindEvents = function () {
+    var bindEvents = function (socket) {
         socket.on('init', function (data) {
             start(data.type, data.dir);
             console.log(data);
@@ -47,5 +47,5 @@ var remoteGame = function (socket) {
         game.init(dir, type);
     }
 
-    bindEvents();
+    bindEvents(socket);
 }
