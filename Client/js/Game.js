@@ -1,13 +1,12 @@
-var Game = function (doms, socket) {
-    var gameDiv = doms.gameDiv;
-    var nextDiv = doms.nextDiv;
-    var gameTimeDiv = doms.gameTimeDiv;
-    var gameScoreDiv = doms.gameScoreDiv;
+var Game = function (socket) {
+    var gameDiv;
+    var nextDiv;
+    var gameTimeDiv;
+    var gameScoreDiv;
     var gameDivs = [];
     var nextDivs = [];
     var curr;
     var next;
-    var SOCKET;
     SOCKET = socket;
     // 游戏主体数据模版 10*20
     var gameData = [
@@ -421,15 +420,26 @@ var Game = function (doms, socket) {
     }
 
     // 初始化
-    var localInit = function () {
-        // 当前方块
-        curr = new Square();
-        // 下一步方块
-        next = new Square();
+    var init = function (doms, type, dir) {
+        gameDiv = doms.gameDiv;
+        nextDiv = doms.nextDiv;
+        gameTimeDiv = doms.gameTimeDiv;
+        gameScoreDiv = doms.gameScoreDiv;
 
-        // 发送 方块类型  方向
-        socket.emit('init', {type: curr.origin.squareNum, dir: curr.origin.dir});
-        socket.emit('next', {type: next.origin.squareNum, dir: next.origin.dir});
+        if (type && dir) {
+            // 当前方块
+            curr = new Square(type, dir);
+
+
+        } else {
+            // 当前方块
+            curr = new Square();
+            // 下一个方块
+            next = new Square();
+
+            // 发送 方块类型  方向
+            socket.emit('init', {type: curr.origin.squareNum, dir: curr.origin.dir});
+        }
 
         initData(gameData, gameDivs, gameDiv);
         initData(nextData, nextDivs, nextDiv);
@@ -439,17 +449,10 @@ var Game = function (doms, socket) {
         refresh(next.data, nextDivs);
     }
 
-    var remoteInit = function (type, dir) {
-
-    }
-
-    this.curr = curr;
-    this.next = next;
     this.keyEvent = keyEvent;
     this.initData = initData;
+    this.init= init;
     this.upTimeSocre = upTimeSocre;
-    this.localInit = localInit;
-    this.remoteInit = remoteInit;
     this.setData = setData;
     this.clearData = clearData;
     this.refresh = refresh;
