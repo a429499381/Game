@@ -153,16 +153,16 @@ var Game = function (doms, socket) {
         document.onkeydown = function (e) {
             if (e.keyCode === 38) { // up rotate
                 rotate();
-                socket.emit('rotate');
+                socket.emit('rotate', 'rotate');
             } else if (e.keyCode === 40) { // down
                 down(curr);
-                socket.emit('down');
+                socket.emit('down', 'down');
             } else if (e.keyCode === 37) { // left
                 left();
-                socket.emit('left');
+                socket.emit('left', 'down');
             } else if (e.keyCode === 39) { // right
                 right();
-                socket.emit('right');
+                socket.emit('right', 'right');
             } else if (e.keyCode === 32) { //  space  下坠
                 fastDown();
             }
@@ -210,7 +210,7 @@ var Game = function (doms, socket) {
             return true;
         } else {
             fixed();
-            socket.emit('fixed');
+            socket.emit('fixed', 'fixed');
             return false;
         }
     }
@@ -397,7 +397,7 @@ var Game = function (doms, socket) {
             if (down()) {
                 down();
                 // 发送下移命令
-                socket.emit('down');
+                socket.emit('down', 'down');
 
             } else {
                 removeY();
@@ -409,8 +409,8 @@ var Game = function (doms, socket) {
                 refresh(next.data, nextDivs);
 
                 // 发送消行，游戏结束检查。。
-                socket.emit('removeY');
-                socket.emit('gameOver');
+                socket.emit('removeY', 'removeY');
+                socket.emit('gameOver', 'gameOver');
                 socket.emit('init', {type: curr.origin.squareNum, dir: curr.origin.dir});
                 socket.emit('next', {type: next.origin.squareNum, dir: next.origin.dir});
             }
@@ -421,7 +421,7 @@ var Game = function (doms, socket) {
     }
 
     // 初始化
-    var init = function () {
+    var localInit = function () {
         // 当前方块
         curr = new Square();
         // 下一步方块
@@ -439,10 +439,17 @@ var Game = function (doms, socket) {
         refresh(next.data, nextDivs);
     }
 
+    var remoteInit = function (type, dir) {
+
+    }
+
+    this.curr = curr;
+    this.next = next;
     this.keyEvent = keyEvent;
     this.initData = initData;
     this.upTimeSocre = upTimeSocre;
-    this.init = init;
+    this.localInit = localInit;
+    this.remoteInit = remoteInit;
     this.setData = setData;
     this.clearData = clearData;
     this.refresh = refresh;

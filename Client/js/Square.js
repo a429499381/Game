@@ -1,8 +1,10 @@
 // 五种方块模版
-var Square = function () {
+var Square = function (type, dir) {
     // 获取随机 方向 方块形状
-    var dirNum = Math.ceil(Math.random() * 4) - 1;
-    var squareNum = Math.ceil(Math.random() * 5) - 1;
+    var dirNum;
+    var squareNum;
+    dir ? dirNum = dir : dirNum = Math.ceil(Math.random() * 4) - 1;
+    type ? squareNum = type : squareNum =  Math.ceil(Math.random() * 5) - 1;
 
     var that = this;
     this.origin = {

@@ -3,12 +3,18 @@ var remoteGame = function (socket) {
 
     // 绑定按钮事件
     var bindEvents = function (socket) {
+        socket.on('start', function (data) {
+           start();
+
+        })
         socket.on('init', function (data) {
-            start(data.type, data.dir);
-            console.log(data);
+           new Square(data.type, data.dir);
+            console.log('init'+ ':' + data.type, data.dir);
+
         })
         socket.on('next', function (data) {
-            console.log(data);
+            new Square(data.type, data.dir);
+            console.log('next'+ ':' +data.type, data.dir);
         })
         socket.on('left', function (data) {
             console.log(data);
@@ -43,8 +49,7 @@ var remoteGame = function (socket) {
         gameScoreDiv: document.getElementById('remoteScore')
     }
     var start = function (type, dir) {
-        game = new Game(doms, socket);
-        game.init(dir, type);
+        game = new Game(doms);
     }
 
     bindEvents(socket);

@@ -8,7 +8,7 @@ var localGame = function (socket) {
     }
     var start = function () {
         game = new Game(doms, socket);
-        game.init();
+        game.localInit();
         game.keyEvent();
         game.autoMove();
     }
