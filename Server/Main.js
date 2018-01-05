@@ -36,8 +36,9 @@ io.on('connection', function (socket) {
         socket.emit('waiting', '等待其他玩家连接');
 
     } else {
-        socket.emit('start', '准备开始');
-        socketMap[(clientCount -1)].emit('str  OK')
+        // socket.emit('start', '准备开始');
+        socketMap[(clientCount - 1)].emit('start', '开始战斗');
+        socketMap[(clientCount)].emit('start', '开始战斗');
     }
 
     bindSocketEvent('init', socket);

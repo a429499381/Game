@@ -7,7 +7,6 @@ var Game = function (socket) {
     var nextDivs = [];
     var curr;
     var next;
-    SOCKET = socket;
     // 游戏主体数据模版 10*20
     var gameData = [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -420,16 +419,16 @@ var Game = function (socket) {
     }
 
     // 初始化
-    var init = function (doms, type, dir) {
+    var init = function (doms, currL, nextL) {
         gameDiv = doms.gameDiv;
         nextDiv = doms.nextDiv;
         gameTimeDiv = doms.gameTimeDiv;
         gameScoreDiv = doms.gameScoreDiv;
 
-        if (type && dir) {
+        if (currL && nextL) {
             // 当前方块
-            curr = new Square(type, dir);
-
+            curr = currL;
+            next = nextL;
 
         } else {
             // 当前方块
@@ -437,8 +436,6 @@ var Game = function (socket) {
             // 下一个方块
             next = new Square();
 
-            // 发送 方块类型  方向
-            socket.emit('init', {type: curr.origin.squareNum, dir: curr.origin.dir});
         }
 
         initData(gameData, gameDivs, gameDiv);
@@ -449,6 +446,7 @@ var Game = function (socket) {
         refresh(next.data, nextDivs);
     }
 
+    this.upTimeSocre = upTimeSocre;
     this.keyEvent = keyEvent;
     this.initData = initData;
     this.init= init;
