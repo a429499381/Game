@@ -42,6 +42,7 @@ io.on('connection', function (socket) {
     }
 
     bindSocketEvent('init', socket);
+    bindSocketEvent('curr', socket);
     bindSocketEvent('next', socket);
     bindSocketEvent('rotate', socket);
     bindSocketEvent('down', socket);
@@ -49,6 +50,10 @@ io.on('connection', function (socket) {
     bindSocketEvent('right', socket);
     bindSocketEvent('removeY', socket);
     bindSocketEvent('gameOver', socket);
+    bindSocketEvent('setData', socket);
+    bindSocketEvent('refresh', socket);
+    bindSocketEvent('upTimeSocre', socket);
+    bindSocketEvent('randomCreateline', socket);
 
 
     socket.on('disconnect', function () {

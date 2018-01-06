@@ -289,6 +289,7 @@ var Game = function (socket) {
 // 消行
     var removeY = function () {
         var lock = true;
+        var count = 0;
         var nullN = null;
         var nullLock = true;
         for (var x = (gameData.length - 1); x >= 0; x--) {
@@ -321,17 +322,16 @@ var Game = function (socket) {
 
 
             if (lock) { // 锁开启状态 消除行  下移行
+                count++; // 计算有多少
+                if(count >= 2) {
+                    count--;
+                }
                 gameScore += 10;
                 upTimeSocre(gameScoreDiv, gameScore);
-
-                // 发送比分
-                socket.emit('upSocre', gameScore);
 
                 if (gameScore % 20 === 0) {
                     randomCreateline(1); // 增加指定行
 
-                    // 发送增加行
-                    socket.emit('randomCreateLine', 1);
                 }
                 for (var i = x; i > nullN; i--) {
                     for (var i1 = 0; i1 < gameData[0].length; i1++) {
@@ -346,6 +346,7 @@ var Game = function (socket) {
                 x++;
             }
         }
+        return count;
     }
 
 // 指定增加N行随机方块
@@ -381,6 +382,7 @@ var Game = function (socket) {
 // 自动下移动
     var autoMove = function (doms) {
         var n = 0;
+        var lines = 0;
         var move = function () {
             n++; // 记时统计
             if (n === 2) {
@@ -398,7 +400,7 @@ var Game = function (socket) {
                 socket.emit('down', 'down');
 
             } else {
-                removeY();
+                lines = removeY();
                 gameOver();
                 curr = next;
                 next = new Square();
@@ -406,11 +408,21 @@ var Game = function (socket) {
                 refresh(gameData, gameDivs);
                 refresh(next.data, nextDivs);
 
+                if(!gameOver()) {
+                    socket.emit('lose', '我输了');
+                    return false;
+                }
+                if(lines > 0) {
+                    socket.emit('randomCreateline', lines);
+                }
                 // 发送消行，游戏结束检查。。
                 socket.emit('removeY', 'removeY');
                 socket.emit('gameOver', 'gameOver');
-                socket.emit('init', {type: curr.origin.squareNum, dir: curr.origin.dir});
+                socket.emit('curr', {type: curr.origin.squareNum, dir: curr.origin.dir});
                 socket.emit('next', {type: next.origin.squareNum, dir: next.origin.dir});
+                socket.emit('upTimeSocre', {'gameTime': gameTime, 'gameSocre': gameScore});
+                socket.emit('setData', 'setData');
+                socket.emit('refresh', 'refresh');
             }
         }
 

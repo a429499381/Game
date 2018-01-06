@@ -49,12 +49,9 @@ var remoteGame = function (socket) {
             game.removeY();
             console.log(data);
         })
-        socket.on('upTime', function (data) {
-            game.upTimeSocre(doms.gameTimeDiv, data);
-            console.log(data);
-        })
-        socket.on('upSocre', function (data) {
-            game.upTimeSocre(doms.gameScoreDiv, data);
+        socket.on('upTimeSocre', function (data) {
+            game.upTimeSocre(doms.gameTimeDiv, data.gameTime);
+            game.upTimeSocre(doms.gameScoreDiv, data.gameScore);
             console.log(data);
         })
     }
