@@ -157,7 +157,7 @@ var Game = function (socket) {
                 socket.emit('down', 'down');
             } else if (e.keyCode === 37) { // left
                 left();
-                socket.emit('left', 'down');
+                socket.emit('left', 'left');
             } else if (e.keyCode === 39) { // right
                 right();
                 socket.emit('right', 'right');
@@ -208,7 +208,6 @@ var Game = function (socket) {
             return true;
         } else {
             fixed();
-            socket.emit('fixed', 'fixed');
             return false;
         }
     }
@@ -416,6 +415,7 @@ var Game = function (socket) {
                     socket.emit('randomCreateline', lines);
                 }
                 // 发送消行，游戏结束检查。。
+                socket.emit('fixed', 'fixed');
                 socket.emit('removeY', 'removeY');
                 socket.emit('gameOver', 'gameOver');
                 socket.emit('curr', {type: curr.origin.squareNum, dir: curr.origin.dir});
@@ -442,14 +442,7 @@ var Game = function (socket) {
             curr = currL;
             next = nextL;
 
-        } else {
-            // 当前方块
-            curr = new Square();
-            // 下一个方块
-            next = new Square();
-
         }
-
         initData(gameData, gameDivs, gameDiv);
         initData(nextData, nextDivs, nextDiv);
         setData(curr, gameData);

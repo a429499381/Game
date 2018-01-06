@@ -8,13 +8,16 @@ var localGame = function (socket) {
     }
     var start = function () {
         var curr = new Square();
-        var next = new Square();
+        var next = new Square(2, 1);
         game = new Game(socket);
         game.init(doms, curr, next);
         game.keyEvent();
-        game.autoMove();
+        // game.autoMove();
 
         // 发送 方块信息
+        console.log('发送的信息curr'+ curr.origin.squareNum + curr.origin.dir);
+        console.log('发送的信息next'+ next.origin.squareNum + next.origin.dir);
+
         socket.emit('init', {type: curr.origin.squareNum, dir: curr.origin.dir});
         socket.emit('next', {type: next.origin.squareNum, dir: next.origin.dir});
     }

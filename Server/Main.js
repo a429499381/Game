@@ -14,17 +14,17 @@ app.listen(PORT);
 var bindSocketEvent = function (type, socket) {
     socket.on(type, function (data) {
         // 发送 接受到 初始化信息 发送给对方
-        if(socket.clientNum % 2 === 0) {
-            socketMap[socket.clientNum -1].emit(type, data);
+        if(socket.clientNum  === 2) {
+            socketMap[socket.clientNum - 1].emit(type, data);
+            console.log(data);
         } else {
-            socketMap[socket.clientNum + 1].emit(type, data);
+            socketMap[socket.clientNum + 1 ].emit(type, data);
         }
-        console.log(data);
+
     })
 }
 
 io.on('connection', function (socket) {
-    console.log(clientCount);
 
     clientCount = clientCount + 1;
     socket.clientNum = clientCount;
@@ -32,13 +32,13 @@ io.on('connection', function (socket) {
 
     console.log(clientCount);
 
-    if(clientCount % 2 === 1) {
+    if(clientCount  !== 2) {
         socket.emit('waiting', '等待其他玩家连接');
 
     } else {
-        // socket.emit('start', '准备开始');
         socketMap[(clientCount - 1)].emit('start', '开始战斗');
         socketMap[(clientCount)].emit('start', '开始战斗');
+        // clientCount = 0;
     }
 
     bindSocketEvent('init', socket);
@@ -57,5 +57,9 @@ io.on('connection', function (socket) {
 
 
     socket.on('disconnect', function () {
+        clientCount--;
+        if(clientCount < 0) {
+            clientCount = 0;
+        }
     })
 })
