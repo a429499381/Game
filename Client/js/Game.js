@@ -322,7 +322,7 @@ var Game = function (socket) {
 
             if (lock) { // 锁开启状态 消除行  下移行
                 count++; // 计算有多少
-                if(count >= 2) {
+                if (count >= 2) {
                     count--;
                 }
                 gameScore += 10;
@@ -393,12 +393,12 @@ var Game = function (socket) {
                 socket.emit('upTime', gameTime);
             }
 
-            if (down()) {
-                down();
-                // 发送下移命令
-                socket.emit('down', 'down');
 
-            } else {
+            var downB = down();
+            // 发送下移命令
+            socket.emit('down', 'down');
+
+            if (!downB) {
                 lines = removeY();
                 gameOver();
                 curr = next;
@@ -407,11 +407,11 @@ var Game = function (socket) {
                 refresh(gameData, gameDivs);
                 refresh(next.data, nextDivs);
 
-                if(!gameOver()) {
+                if (!gameOver()) {
                     socket.emit('lose', '我输了');
                     return false;
                 }
-                if(lines > 0) {
+                if (lines > 0) {
                     socket.emit('randomCreateline', lines);
                 }
                 // 发送消行，游戏结束检查。。
@@ -454,7 +454,7 @@ var Game = function (socket) {
     this.upTimeSocre = upTimeSocre;
     this.keyEvent = keyEvent;
     this.initData = initData;
-    this.init= init;
+    this.init = init;
     this.upTimeSocre = upTimeSocre;
     this.setData = setData;
     this.clearData = clearData;

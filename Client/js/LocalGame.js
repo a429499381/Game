@@ -12,7 +12,7 @@ var localGame = function (socket) {
         game = new Game(socket);
         game.init(doms, curr, next);
         game.keyEvent();
-        // game.autoMove();
+        game.autoMove();
 
         // 发送 方块信息
         console.log('发送的信息curr'+ curr.origin.squareNum + curr.origin.dir);

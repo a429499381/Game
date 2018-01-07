@@ -27,6 +27,9 @@ var bindSocketEvent = function (type, socket) {
 io.on('connection', function (socket) {
 
     clientCount = clientCount + 1;
+    if(clientCount > 2) {
+        clientCount = 2;
+    }
     socket.clientNum = clientCount;
     socketMap[clientCount] = socket;
 
