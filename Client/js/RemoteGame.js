@@ -60,6 +60,10 @@ var remoteGame = function (socket) {
             game.upTimeSocre(doms.gameScoreDiv, data.gameScore);
             // console.log(data);
         })
+        socket.on('lose', function (data) {
+
+            // console.log(data);
+        })
     }
 
     bindEvents(socket);

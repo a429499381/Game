@@ -205,7 +205,7 @@ var Square = function (type, dir) {
     //     }
     //     return false;
     // };
-    var getSquare = function (type, dir) {
+    this.getSquare = function (type, dir) {
         var data = [];
         if (type >= 0 && dir >= 0) {
             data = eval('squareData' + type)[dir];
@@ -214,7 +214,7 @@ var Square = function (type, dir) {
     }
 
     this.createData = function () {
-        that.data = getSquare(that.origin.squareNum, that.origin.dir);
+        that.data = that.getSquare(that.origin.squareNum, that.origin.dir);
     }
 
 
@@ -233,7 +233,7 @@ var Square = function (type, dir) {
         } else {
             this.origin.dir++;
         }
-        this.data = this.getSquare(this.origin.dir);
+        this.data = this.getSquare(this.origin.squareNum, this.origin.dir);
     }
 
     // 初始化执行一次
