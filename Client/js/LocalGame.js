@@ -20,6 +20,9 @@ var localGame = function (socket) {
 
         socket.emit('init', {type: curr.origin.squareNum, dir: curr.origin.dir});
         socket.emit('next', {type: next.origin.squareNum, dir: next.origin.dir});
+        socket.on('lose', function () {
+           game.gameOver(true);
+        });
     }
 
     socket.on('start', function () {

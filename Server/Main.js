@@ -49,6 +49,7 @@ io.on('connection', function (socket) {
     bindSocketEvent('next', socket);
     bindSocketEvent('rotate', socket);
     bindSocketEvent('down', socket);
+    bindSocketEvent('fastDown', socket);
     bindSocketEvent('left', socket);
     bindSocketEvent('right', socket);
     bindSocketEvent('removeY', socket);

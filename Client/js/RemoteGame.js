@@ -6,7 +6,7 @@ var remoteGame = function (socket) {
         gameDiv: document.getElementById('remoteGame'),
         nextDiv: document.getElementById('remoteNext'),
         gameTimeDiv: document.getElementById('remoteTime'),
-        gameScoreDiv: document.getElementById('remoteScore')
+        gameScoreDiv: document.getElementById('remoteScore'),
     };
 
     // 绑定按钮事件
@@ -43,6 +43,10 @@ var remoteGame = function (socket) {
             game.down();
             // console.log(data);
         })
+        socket.on('fastDown', function (data) {
+            game.fastDown();
+            // console.log(data);
+        })
         socket.on('rotate', function (data) {
             game.rotate();
             // console.log(data);
@@ -61,8 +65,8 @@ var remoteGame = function (socket) {
             // console.log(data);
         })
         socket.on('lose', function (data) {
-
-            // console.log(data);
+            document.getElementsByClassName('localLose').innerHTML = '你赢了'
+            document.getElementsByClassName('remoteLose').innerHTML = '你输了'
         })
     }
 

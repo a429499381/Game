@@ -163,6 +163,7 @@ var Game = function (socket) {
                 socket.emit('right', 'right');
             } else if (e.keyCode === 32) { //  space  下坠
                 fastDown();
+                socket.emit('fastDown', 'fastDown');
             }
         }
     };
@@ -273,15 +274,21 @@ var Game = function (socket) {
     }
 
 // game over
-    var gameOver = function () {
-        for (var y = 0; y < gameData[0].length; y++) {
-            if (gameData[0][y] === 2) {
-                clearInterval(time);
-                console.log('游戏失败, 再接再厉');
-                return false;
+    var gameOver = function (bool) {
+        if(bool) {
+            clearInterval(time);
+            return true;
+        } else {
+            for (var y = 0; y < gameData[0].length; y++) {
+                if (gameData[0][y] === 2) {
+                    clearInterval(time);
+                    console.log('游戏失败, 再接再厉');
+                    return false;
+                }
             }
+            return true;
         }
-        return true;
+
     }
 
 
@@ -408,7 +415,11 @@ var Game = function (socket) {
                 refresh(next.data, nextDivs);
 
                 if (!gameOver()) {
-                    socket.emit('lose', '我输了');
+                    var localL = document.getElementById('localLose');
+                    var remoteL = document.getElementById('remoteLose');
+                    socket.emit('lose', '输了');
+                    localL.innerHTML = '你输了';
+                    remoteL.innerHTML = '你赢了';
                     return false;
                 }
                 if (lines > 0) {
