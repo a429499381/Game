@@ -22,6 +22,7 @@ var remoteGame = function (socket) {
 
         })
         socket.on('curr', function (data) {
+            currL = [];
             currL = new Square(data.type, data.dir);
             console.log('curr'+ ':' +data.type, data.dir);
         })

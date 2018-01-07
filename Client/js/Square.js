@@ -13,15 +13,17 @@ var Square = function (type, dir) {
         dir: null,
         squareNum: null
     };
-    if(type && dir) {
-        this.origin.dir = dir;
-        this.origin.squareNum = type;
+
+    if (type >= 0 && dir >= 0) {
+        that.origin.dir = dir;
+        that.origin.squareNum = type;
 
     } else {
-        this.origin.dir = dirNum;
-        this.origin.squareNum = squareNum;
+        that.origin.dir = dirNum;
+        that.origin.squareNum = squareNum;
 
     }
+
 
     this.data = [
         [0, 0, 0, 0],
@@ -163,46 +165,57 @@ var Square = function (type, dir) {
     ]; // z
 
     // 获取指定 方向 方块
-    this.getSquare = function (dir) {
-        if (squareNum === 0) {
-            if (dir) {
-                return squareData0[dir];
-            } else {
-                that.data = squareData0[dirNum];
-                return that.data;
-            }
-
-        } else if (squareNum === 1) {
-            if (dir >= 0) {
-                return squareData1[dir];
-            } else {
-                that.data = squareData1[dirNum];
-                return that.data;
-            }
-        } else if (squareNum === 2) {
-            if (dir >= 0) {
-                return squareData2[dir];
-            } else {
-                that.data = squareData2[dirNum];
-                return that.data;
-            }
-        } else if (squareNum === 3) {
-            if (dir >= 0) {
-                return squareData3[dir];
-            } else {
-                that.data = squareData3[dirNum];
-                return that.data;
-            }
-        } else if (squareNum === 4) {
-            if (dir >= 0) {
-                return squareData4[dir];
-            } else {
-                that.data = squareData4[dirNum];
-                return that.data;
-            }
+    // this.getSquare = function (type, dir) {
+    //     if (squareNum === 0) {
+    //         if (dir) {
+    //             return squareData0[dir];
+    //         } else {
+    //             that.data = squareData0[dirNum];
+    //             return that.data;
+    //         }
+    //
+    //     } else if (squareNum === 1) {
+    //         if (dir >= 0) {
+    //             return squareData1[dir];
+    //         } else {
+    //             that.data = squareData1[dirNum];
+    //             return that.data;
+    //         }
+    //     } else if (squareNum === 2) {
+    //         if (dir >= 0) {
+    //             return squareData2[dir];
+    //         } else {
+    //             that.data = squareData2[dirNum];
+    //             return that.data;
+    //         }
+    //     } else if (squareNum === 3) {
+    //         if (dir >= 0) {
+    //             return squareData3[dir];
+    //         } else {
+    //             that.data = squareData3[dirNum];
+    //             return that.data;
+    //         }
+    //     } else if (squareNum === 4) {
+    //         if (dir >= 0) {
+    //             return squareData4[dir];
+    //         } else {
+    //             that.data = squareData4[dirNum];
+    //             return that.data;
+    //         }
+    //     }
+    //     return false;
+    // };
+    var getSquare = function (type, dir) {
+        var data = [];
+        if (type >= 0 && dir >= 0) {
+            data = eval('squareData' + type)[dir];
+            return data
         }
-        return false;
-    };
+    }
+
+    this.createData = function () {
+        that.data = getSquare(that.origin.squareNum, that.origin.dir);
+    }
 
 
     this.down = function () {
@@ -224,7 +237,7 @@ var Square = function (type, dir) {
     }
 
     // 初始化执行一次
-    this.getSquare();
+    this.createData();
 };
 
 

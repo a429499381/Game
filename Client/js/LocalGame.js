@@ -7,8 +7,8 @@ var localGame = function (socket) {
         gameScoreDiv: document.getElementById('localScore')
     }
     var start = function () {
-        var curr = new Square();
-        var next = new Square(2, 1);
+        var curr = new Square(0, 0);
+        var next = new Square(0, 1);
         game = new Game(socket);
         game.init(doms, curr, next);
         game.keyEvent();

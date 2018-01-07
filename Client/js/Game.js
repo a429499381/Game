@@ -179,7 +179,7 @@ var Game = function (socket) {
             }
         }
         var origin = new Origin();
-        if (checkData(curr, curr.getSquare(origin.origin.dir))) {
+        if (checkData(curr, curr.getSquare(origin.origin.squareNum, origin.origin.dir))) {
             clearData(curr);
             curr.rotate();
             setData(curr, gameData);
