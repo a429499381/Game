@@ -275,7 +275,7 @@ var Game = function (socket) {
 
 // game over
     var gameOver = function (bool) {
-        if(bool) {
+        if (bool) {
             clearInterval(time);
             return true;
         } else {
@@ -312,7 +312,6 @@ var Game = function (socket) {
                             nullLock = false;
                             nullN = v;
                         }
-
                     }
                 }
             }
@@ -328,27 +327,16 @@ var Game = function (socket) {
 
 
             if (lock) { // 锁开启状态 消除行  下移行
-                count++; // 计算有多少
-                if (count >= 2) {
-                    count--;
-                }
+                count++; // 计算有多少行消除了
+
                 gameScore += 10;
                 upTimeSocre(gameScoreDiv, gameScore);
 
-                if (gameScore % 20 === 0) {
-                    randomCreateline(1); // 增加指定行
-
-                }
                 for (var i = x; i > nullN; i--) {
                     for (var i1 = 0; i1 < gameData[0].length; i1++) {
                         gameData[i][i1] = gameData[i - 1][i1];
                     }
                 }
-                // 此行 无法理解！！！！
-                // for (var i1 = 0; i1< gameData[0].length; i1++) {
-                //     console.log(gameData[0][i1]);
-                //     gameData[0][i1] = 0;
-                // }
                 x++;
             }
         }
@@ -357,21 +345,29 @@ var Game = function (socket) {
 
 // 指定增加N行随机方块
     var randomCreateline = function (lines) {
-        // 所有不为0的数据全部上移一行
-        for (var line = 1; line < gameData.length; line++) {
-            for (var s = 0; s < gameData[0].length; s++) {
-                // 空行检测
-                if (gameData[line][s] !== 0) {
-                    if (line + lines > gameData.length) {
-                        gameOver(); // 游戏结束
+        var heightLine = null;
+        var heightLineLock = true;
 
-                    } else {
-                        gameData[line - lines][s] = gameData[line][s];
-                        gameData[line][s] = 0;
+        // 检查有数据最上面的一层空行
+        for (var line = 1; line < gameData.length -1; line++) {
+             for(var n = 0; n < gameData[0].length; n++) {
+                 if(gameData[line][n] === 2) {
+                     if(line - lines > 0 && heightLineLock) {
+                         heightLineLock = false;
+                         heightLine = line;
+                         break;
 
-                    }
-                }
-            }
+                     }
+                     break;
+
+                 }
+             }
+        }
+
+        // 所有数据上移
+        for(var m = heightLine; m < gameData.length; m++) {
+            gameData[m - 1] =gameData[m];
+            gameData[m] = [0,0,0,0,0,0,0,0,0,0];
         }
 
 
@@ -422,7 +418,9 @@ var Game = function (socket) {
                     remoteL.innerHTML = '你赢了';
                     return false;
                 }
-                if (lines > 0) {
+                if (lines > 1) {
+                    lines--; // 每 2 行增加一行
+                    randomCreateline(lines); // 随机产生 lines 行
                     socket.emit('randomCreateline', lines);
                 }
                 // 发送消行，游戏结束检查。。
