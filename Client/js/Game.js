@@ -25,10 +25,10 @@ var Game = function (socket) {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 0]
     ];
     var nextData = [
         [0, 0, 0, 0],
@@ -366,15 +366,15 @@ var Game = function (socket) {
 
         // 所有数据上移
         for(var m = heightLine; m < gameData.length; m++) {
-            gameData[m - 1] =gameData[m];
+            gameData[m - lines] =gameData[m];
             gameData[m] = [0,0,0,0,0,0,0,0,0,0];
         }
 
 
         // 将产生的新数据写入底部行
-        for (var l = 0; l < lines; l++) {
+        for (var l = 1; l <= lines; l++) {
             for (var y = 0; y < gameData[0].length; y++) {
-                gameData[gameData.length - 1][y] = Math.ceil(Math.random() * 2) - 1 === 1 ? 2 : 0;
+                gameData[gameData.length - l][y] = Math.ceil(Math.random() * 2) - 1 === 1 ? 2 : 0;
 
             }
         }
