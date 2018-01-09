@@ -344,7 +344,7 @@ var Game = function (socket) {
     }
 
 // 指定增加N行随机方块
-    var randomCreateline = function (lines) {
+    var randomCreateline = function (lines, data) {
         var heightLine = null;
         var heightLineLock = true;
 
@@ -374,6 +374,9 @@ var Game = function (socket) {
         // 将产生的新数据写入底部行
         for (var l = 1; l <= lines; l++) {
             for (var y = 0; y < gameData[0].length; y++) {
+                if(data) {
+                    gameData[gameData.length - l] = data[lines];
+                }
                 gameData[gameData.length - l][y] = Math.ceil(Math.random() * 2) - 1 === 1 ? 2 : 0;
 
             }
@@ -419,9 +422,13 @@ var Game = function (socket) {
                     return false;
                 }
                 if (lines > 1) {
+                    var data =[]
+                    for(var i = gameData.length - lines; i < gameData.length; i++) {
+                        data.push(gameData[i]);
+                    }
                     lines--; // 每 2 行增加一行
                     randomCreateline(lines); // 随机产生 lines 行
-                    socket.emit('randomCreateline', lines);
+                    socket.emit('randomCreateLine', {lines: lines, data: data});
                 }
                 // 发送消行，游戏结束检查。。
                 socket.emit('fixed', 'fixed');
@@ -437,6 +444,11 @@ var Game = function (socket) {
 
         time ? clearInterval(time) : '';
         time = setInterval(move, TIME);
+    }
+
+    // 接收到的数据 写入底部
+    var receive = function (lines, data) {
+
     }
 
     // 初始化
