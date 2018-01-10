@@ -371,19 +371,32 @@ var Game = function (socket) {
         }
 
 
-        // 将产生的新数据写入底部行
-        for (var l = 1; l <= lines; l++) {
-            for (var y = 0; y < gameData[0].length; y++) {
-                if(data) {
-                    gameData[gameData.length - l] = data[lines];
-                }
-                gameData[gameData.length - l][y] = Math.ceil(Math.random() * 2) - 1 === 1 ? 2 : 0;
-
-            }
-        }
+        addLineData(data);
 
     }
-    
+    // 产生任意行的数据
+    var createLine = function (lines) {
+        var data = [];
+        var temp = [];
+        for (var i = 0; i < lines; i++) {
+            temp = [];
+            for (var j = 0; j < gameData[0].length; j++) {
+                temp.push(Math.ceil(Math.random() * 2) - 1 === 1 ? 2 : 0);
+
+            }
+            data.push(temp);
+        }
+        console.log(data);
+        return data;
+    }
+
+    // 把接收到的数据 写入底部
+    var addLineData = function (data) {
+        for (var i = 0; i < data.length; i++) {
+            gameData[gameData.length - data.length + i] = data[i];
+        }
+    }
+
 
 // 自动下移动
     var autoMove = function (doms) {
@@ -473,6 +486,8 @@ var Game = function (socket) {
         refresh(next.data, nextDivs);
     }
 
+    this.addLineData = addLineData;
+    this.createLine = createLine;
     this.upTimeSocre = upTimeSocre;
     this.keyEvent = keyEvent;
     this.initData = initData;

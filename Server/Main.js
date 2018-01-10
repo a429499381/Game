@@ -60,6 +60,7 @@ io.on('connection', function (socket) {
     bindSocketEvent('randomCreateLine', socket);
     bindSocketEvent('lose', socket);
     bindSocketEvent('createLine', socket);
+    bindSocketEvent('addLineData', socket);
 
 
     socket.on('disconnect', function () {

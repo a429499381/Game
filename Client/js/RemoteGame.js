@@ -51,9 +51,13 @@ var remoteGame = function (socket) {
             game.rotate();
             // console.log(data);
         })
+        socket.on('addLineData', function (data) {
+            game.randomCreateline(data.length, data);
+            console.log('remote call data',data);
+        })
         socket.on('removeY', function (data) {
             game.removeY();
-            // console.log(data);
+            console.log(data);
         })
         socket.on('upTimeSocre', function (data) {
             game.upTimeSocre(doms.gameTimeDiv, data.gameTime);

@@ -35,7 +35,10 @@ var localGame = function (socket) {
         remoteL.innerHTML = '你输了';
     });
     socket.on('createLine', function (lines) {
-        game.randomCreateline(lines);
+        var data = game.createLine(lines);
+        game.randomCreateline(lines, data);
+
+        socket.emit('addLineData', data);
     })
 
 
