@@ -6,6 +6,7 @@ var localGame = function (socket) {
         gameTimeDiv: document.getElementById('localTime'),
         gameScoreDiv: document.getElementById('localScore')
     }
+
     var start = function () {
         var curr = new Square(0, 0);
         var next = new Square(0, 1);
@@ -20,14 +21,21 @@ var localGame = function (socket) {
 
         socket.emit('init', {type: curr.origin.squareNum, dir: curr.origin.dir});
         socket.emit('next', {type: next.origin.squareNum, dir: next.origin.dir});
-        socket.on('lose', function () {
-           game.gameOver(true);
-        });
+
     }
 
     socket.on('start', function () {
         start(); // 收到 start 开始游戏
     })
+    socket.on('lose', function () {
+        game.gameOver(true);
+        var localL = document.getElementById('localLose');
+        var remoteL = document.getElementById('remoteLose');
+        localL.innerHTML = '你赢了';
+        remoteL.innerHTML = '你输了';
+    });
+
+
 
     this.start = start;
 }

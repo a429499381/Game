@@ -58,6 +58,7 @@ io.on('connection', function (socket) {
     bindSocketEvent('refresh', socket);
     bindSocketEvent('upTimeSocre', socket);
     bindSocketEvent('randomCreateLine', socket);
+    bindSocketEvent('lose', socket);
 
 
     socket.on('disconnect', function () {
