@@ -51,10 +51,6 @@ var remoteGame = function (socket) {
             game.rotate();
             // console.log(data);
         })
-        socket.on('randomCreateLine', function (data) {
-            game.randomCreateline(data);
-            // console.log(data);
-        })
         socket.on('removeY', function (data) {
             game.removeY();
             // console.log(data);

@@ -383,6 +383,7 @@ var Game = function (socket) {
         }
 
     }
+    
 
 // 自动下移动
     var autoMove = function (doms) {
@@ -427,8 +428,8 @@ var Game = function (socket) {
                         data.push(gameData[i]);
                     }
                     lines--; // 每 2 行增加一行
-                    randomCreateline(lines); // 随机产生 lines 行
-                    socket.emit('randomCreateLine', {lines: lines, data: data});
+                    // randomCreateline(lines); // 随机产生 lines 行
+                    socket.emit('createLine', lines);
                 }
                 // 发送消行，游戏结束检查。。
                 socket.emit('fixed', 'fixed');
