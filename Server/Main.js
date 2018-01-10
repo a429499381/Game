@@ -57,7 +57,6 @@ io.on('connection', function (socket) {
     bindSocketEvent('setData', socket);
     bindSocketEvent('refresh', socket);
     bindSocketEvent('upTimeSocre', socket);
-    bindSocketEvent('randomCreateLine', socket);
     bindSocketEvent('lose', socket);
     bindSocketEvent('createLine', socket);
     bindSocketEvent('addLineData', socket);

@@ -282,7 +282,6 @@ var Game = function (socket) {
             for (var y = 0; y < gameData[0].length; y++) {
                 if (gameData[0][y] === 2) {
                     clearInterval(time);
-                    console.log('游戏失败, 再接再厉');
                     return false;
                 }
             }
@@ -386,7 +385,6 @@ var Game = function (socket) {
             }
             data.push(temp);
         }
-        console.log(data);
         return data;
     }
 
@@ -441,7 +439,7 @@ var Game = function (socket) {
                         data.push(gameData[i]);
                     }
                     lines--; // 每 2 行增加一行
-                    // randomCreateline(lines); // 随机产生 lines 行
+
                     socket.emit('createLine', lines);
                 }
                 // 发送消行，游戏结束检查。。

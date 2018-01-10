@@ -17,39 +17,35 @@ var remoteGame = function (socket) {
         })
         socket.on('init', function (data) {
             currL = new Square(data.type, data.dir);
-            console.log('init'+ ':' + data.type, data.dir);
-            console.log('currL'+ ':' + currL.origin.squareNum, currL.origin.dir);
 
         })
         socket.on('curr', function (data) {
             currL = [];
             currL = new Square(data.type, data.dir);
-            console.log('curr'+ ':' +data.type, data.dir);
         })
         socket.on('next', function (data) {
             nextL = new Square(data.type, data.dir);
             game.init(doms, currL, nextL);
-            console.log('next'+ ':' +data.type, data.dir);
         })
         socket.on('left', function (data) {
             game.left();
-            // console.log(data);
+
         })
         socket.on('right', function (data) {
             game.right();
-            // console.log(data);
+
         })
         socket.on('down', function (data) {
             game.down();
-            // console.log(data);
+
         })
         socket.on('fastDown', function (data) {
             game.fastDown();
-            // console.log(data);
+
         })
         socket.on('rotate', function (data) {
             game.rotate();
-            // console.log(data);
+
         })
         socket.on('addLineData', function (data) {
             game.randomCreateline(data.length, data);
@@ -57,12 +53,10 @@ var remoteGame = function (socket) {
         })
         socket.on('removeY', function (data) {
             game.removeY();
-            console.log(data);
         })
         socket.on('upTimeSocre', function (data) {
             game.upTimeSocre(doms.gameTimeDiv, data.gameTime);
             game.upTimeSocre(doms.gameScoreDiv, data.gameScore);
-            // console.log(data);
         })
         socket.on('lose', function (data) {
             document.getElementsByClassName('localLose').innerHTML = '你赢了'

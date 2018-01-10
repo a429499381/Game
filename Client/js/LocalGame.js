@@ -16,9 +16,6 @@ var localGame = function (socket) {
         game.autoMove();
 
         // 发送 方块信息
-        console.log('发送的信息curr'+ curr.origin.squareNum + curr.origin.dir);
-        console.log('发送的信息next'+ next.origin.squareNum + next.origin.dir);
-
         socket.emit('init', {type: curr.origin.squareNum, dir: curr.origin.dir});
         socket.emit('next', {type: next.origin.squareNum, dir: next.origin.dir});
 
