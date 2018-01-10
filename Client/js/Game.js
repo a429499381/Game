@@ -149,6 +149,14 @@ var Game = function (socket) {
 // 键盘控制
     var keyEvent = function () {
         document.onkeydown = function (e) {
+            if (e.keyCode === 80) { // P 暂停
+                if(time) {
+                    clearInterval(time);
+                    time = null;
+                } else {
+                    autoMove()
+                }
+            }
             if (e.keyCode === 38) { // up rotate
                 rotate();
                 socket.emit('rotate', 'rotate');
