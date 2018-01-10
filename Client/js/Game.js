@@ -203,7 +203,7 @@ var Game = function (socket) {
 
         if (checkData(origin, curr.data)) {
             clearData(curr);
-            curr.down()
+            curr.down();
             setData(curr, gameData);
             refresh(gameData, gameDivs);
             return true;
@@ -450,7 +450,7 @@ var Game = function (socket) {
                 socket.emit('gameOver', 'gameOver');
                 socket.emit('curr', {type: curr.origin.squareNum, dir: curr.origin.dir});
                 socket.emit('next', {type: next.origin.squareNum, dir: next.origin.dir});
-                socket.emit('upTimeSocre', {'gameTime': gameTime, 'gameSocre': gameScore});
+                socket.emit('upTimeSocre', {'gameTime': gameTime, 'gameScore': gameScore});
                 socket.emit('setData', 'setData');
                 socket.emit('refresh', 'refresh');
             }
@@ -492,12 +492,6 @@ var Game = function (socket) {
     this.keyEvent = keyEvent;
     this.initData = initData;
     this.init = init;
-    this.upTimeSocre = upTimeSocre;
-    this.setData = setData;
-    this.clearData = clearData;
-    this.refresh = refresh;
-    this.checkData = checkData;
-    this.checkBorder = checkBorder;
     this.rotate = rotate;
     this.down = down;
     this.fastDown = fastDown;
