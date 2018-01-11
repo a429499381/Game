@@ -164,47 +164,6 @@ var Square = function (type, dir) {
         ]
     ]; // z
 
-    // 获取指定 方向 方块
-    // this.getSquare = function (type, dir) {
-    //     if (squareNum === 0) {
-    //         if (dir) {
-    //             return squareData0[dir];
-    //         } else {
-    //             that.data = squareData0[dirNum];
-    //             return that.data;
-    //         }
-    //
-    //     } else if (squareNum === 1) {
-    //         if (dir >= 0) {
-    //             return squareData1[dir];
-    //         } else {
-    //             that.data = squareData1[dirNum];
-    //             return that.data;
-    //         }
-    //     } else if (squareNum === 2) {
-    //         if (dir >= 0) {
-    //             return squareData2[dir];
-    //         } else {
-    //             that.data = squareData2[dirNum];
-    //             return that.data;
-    //         }
-    //     } else if (squareNum === 3) {
-    //         if (dir >= 0) {
-    //             return squareData3[dir];
-    //         } else {
-    //             that.data = squareData3[dirNum];
-    //             return that.data;
-    //         }
-    //     } else if (squareNum === 4) {
-    //         if (dir >= 0) {
-    //             return squareData4[dir];
-    //         } else {
-    //             that.data = squareData4[dirNum];
-    //             return that.data;
-    //         }
-    //     }
-    //     return false;
-    // };
     this.getSquare = function (type, dir) {
         var data = [];
         if (type >= 0 && dir >= 0) {

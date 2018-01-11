@@ -193,7 +193,6 @@ var Game = function (socket) {
             curr.rotate();
             setData(curr, gameData);
             refresh(gameData, gameDivs);
-            clearData(curr);
             return true;
         }
     }
@@ -442,10 +441,6 @@ var Game = function (socket) {
                     return false;
                 }
                 if (lines > 1) {
-                    var data =[]
-                    for(var i = gameData.length - lines; i < gameData.length; i++) {
-                        data.push(gameData[i]);
-                    }
                     lines--; // 每 2 行增加一行
 
                     socket.emit('createLine', lines);
