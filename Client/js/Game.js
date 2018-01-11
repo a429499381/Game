@@ -25,7 +25,7 @@ var Game = function (socket) {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
         [2, 2, 2, 2, 2, 2, 2, 2, 2, 0],
         [2, 2, 2, 2, 2, 2, 2, 2, 2, 0]
@@ -150,12 +150,7 @@ var Game = function (socket) {
     var keyEvent = function () {
         document.onkeydown = function (e) {
             if (e.keyCode === 80) { // P 暂停
-                if(time) {
-                    clearInterval(time);
-                    time = null;
-                } else {
-                    autoMove()
-                }
+                pause();
             }
             if (e.keyCode === 38) { // up rotate
                 rotate();
@@ -175,6 +170,16 @@ var Game = function (socket) {
             }
         }
     };
+
+    // pause
+    var pause = function () {
+        if(time) {
+            clearInterval(time);
+            time = null;
+        } else {
+            autoMove()
+        }
+    }
 
 // 旋转
     var rotate = function () {
@@ -371,6 +376,7 @@ var Game = function (socket) {
         }
 
         // 所有数据上移
+        heightLine ? heightLine = 16 : '';
         for(var m = heightLine; m < gameData.length; m++) {
             gameData[m - lines] =gameData[m];
             gameData[m] = [0,0,0,0,0,0,0,0,0,0];
@@ -487,6 +493,7 @@ var Game = function (socket) {
         refresh(next.data, nextDivs);
     }
 
+    this.pause = pause;
     this.addLineData = addLineData;
     this.createLine = createLine;
     this.upTimeSocre = upTimeSocre;
