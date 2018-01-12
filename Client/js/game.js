@@ -408,11 +408,6 @@ var Game = function (socket) {
         }
     }
 
-    // refreshSocket
-    var refreshSocket = function () {
-        refresh(gameData, gameDivs);
-    }
-
 
 // 自动下移动
     var autoMove = function (doms) {
@@ -499,7 +494,6 @@ var Game = function (socket) {
     }
 
     this.pause = pause;
-    this.refreshSocket = refreshSocket;
     this.addLineData = addLineData;
     this.createLine = createLine;
     this.upTimeSocre = upTimeSocre;
