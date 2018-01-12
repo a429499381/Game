@@ -49,6 +49,7 @@ var remoteGame = function (socket) {
         })
         socket.on('addLineData', function (data) {
             game.randomCreateline(data.length, data);
+            game.refreshSocket();
             console.log('remote call data',data);
         })
         socket.on('removeY', function (data) {
